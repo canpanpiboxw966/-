@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#ffffff"/>
+  <!-- Court Symbol (Scale with Korean Court motif) -->
+  <g transform="translate(140, 45)">
+    <!-- Outer wreath / stylized balance -->
+    <circle cx="60" cy="65" r="54" fill="none" stroke="#1e3a8a" stroke-width="3.5"/>
+    <circle cx="60" cy="65" r="48" fill="#f8fafc" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+    
+    <!-- Scale Beam -->
+    <path d="M 30 52 L 90 52" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round"/>
+    <!-- Center Pillar -->
+    <path d="M 60 30 L 60 100" stroke="#1e3a8a" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="60" cy="30" r="5" fill="#1e3a8a"/>
+    <rect x="42" y="98" width="36" height="7" rx="3" fill="#1e3a8a"/>
+
+    <!-- Left Pan -->
+    <path d="M 30 52 L 20 74 L 40 74 Z" fill="none" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 16 74 C 16 85 44 85 44 74 Z" fill="#3b82f6" opacity="0.85"/>
+
+    <!-- Right Pan -->
+    <path d="M 90 52 L 80 74 L 100 74 Z" fill="none" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 76 74 C 76 85 104 85 104 74 Z" fill="#3b82f6" opacity="0.85"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="200" y="205" font-family="'Pretendard', -apple-system, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="1.5">
+    대한민국 법원
+  </text>
+  <text x="200" y="230" font-family="'Pretendard', -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle" letter-spacing="2">
+    SUPREME COURT OF KOREA
+  </text>
+  <text x="200" y="255" font-family="'Pretendard', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">
+    법원 감정측량인 위촉
+  </text>
+</svg>

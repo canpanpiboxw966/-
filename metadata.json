@@ -1,0 +1,6 @@
+{
+  "name": "SOUL SURVEY (소울측량)",
+  "description": "작지만 가까운 측량 파트너 · 정확한 현장 대응 · 20년+ 현장 경험의 종합 측량/공간정보 솔루션",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

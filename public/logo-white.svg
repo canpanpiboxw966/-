@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" fill="none">
+  <defs>
+    <!-- S-Ribbon Gradient -->
+    <linearGradient id="sRibbonGradWhite" x1="50" y1="380" x2="330" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#14465B" />
+      <stop offset="25%" stop-color="#1C6674" />
+      <stop offset="55%" stop-color="#2D8F7B" />
+      <stop offset="80%" stop-color="#51AB88" />
+      <stop offset="100%" stop-color="#72BE9B" />
+    </linearGradient>
+
+    <!-- Inner S-Ribbon Gradient -->
+    <linearGradient id="sInnerGradWhite" x1="60" y1="360" x2="310" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#123B4E" />
+      <stop offset="30%" stop-color="#1B6D74" />
+      <stop offset="65%" stop-color="#34997E" />
+      <stop offset="100%" stop-color="#69B794" />
+    </linearGradient>
+
+    <!-- 3D Cube Facet Gradients -->
+    <linearGradient id="cubeTopW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8DD8B1" />
+      <stop offset="100%" stop-color="#69BE95" />
+    </linearGradient>
+    <linearGradient id="cubeLeftW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4AA883" />
+      <stop offset="100%" stop-color="#30896B" />
+    </linearGradient>
+    <linearGradient id="cubeRightW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#287C62" />
+      <stop offset="100%" stop-color="#195C46" />
+    </linearGradient>
+  </defs>
+
+  <!-- LEFT: S-MARK WITH SURVEY TRIANGULATION NETWORK AND CUBES -->
+  <g id="s-symbol-white">
+    <!-- Survey Triangulation Network Lines -->
+    <g stroke="#4FB994" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+      <line x1="270" y1="42" x2="236" y2="120" />
+      <line x1="270" y1="42" x2="326" y2="195" />
+      <line x1="236" y1="120" x2="276" y2="152" />
+      <line x1="326" y1="195" x2="260" y2="238" />
+      <line x1="48" y1="262" x2="98" y2="255" />
+      <line x1="48" y1="262" x2="62" y2="340" />
+    </g>
+
+    <!-- Outer S Ribbon Track -->
+    <path
+      d="M 292,126
+         C 285,74 235,46 172,54
+         C 95,64 52,130 64,208
+         C 72,260 115,296 182,316
+         C 252,336 295,310 292,252
+         C 288,206 250,188 190,178
+         C 126,168 84,198 88,252
+         C 92,302 142,352 216,358
+         C 278,362 316,324 316,260
+         C 316,192 264,158 184,150
+         C 120,144 94,106 130,78
+         C 170,48 238,54 278,92"
+      fill="none"
+      stroke="url(#sRibbonGradWhite)"
+      stroke-width="19"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Inner Concentric S Ribbon Track -->
+    <path
+      d="M 264,136
+         C 255,92 216,74 168,80
+         C 108,88 78,142 86,204
+         C 94,248 132,278 188,296
+         C 248,314 276,294 274,250
+         C 270,214 240,200 186,190
+         C 134,180 106,204 108,246
+         C 110,286 150,326 210,332
+         C 260,336 292,306 292,256
+         C 292,202 250,172 186,166
+         C 134,160 114,128 142,106
+         C 174,82 226,88 256,118"
+      fill="none"
+      stroke="url(#sInnerGradWhite)"
+      stroke-width="11"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- 3D CUBES -->
+    <g transform="translate(252, 14)">
+      <polygon points="18,3 34,12 18,21 2,12" fill="url(#cubeTopW)" />
+      <polygon points="2,12 18,21 18,39 2,30" fill="url(#cubeLeftW)" />
+      <polygon points="18,21 34,12 34,30 18,39" fill="url(#cubeRightW)" />
+    </g>
+    <g transform="translate(220, 102)">
+      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTopW)" />
+      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeftW)" />
+      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRightW)" />
+    </g>
+    <g transform="translate(308, 178)">
+      <polygon points="18,3 34,12 18,21 2,12" fill="url(#cubeTopW)" />
+      <polygon points="2,12 18,21 18,39 2,30" fill="url(#cubeLeftW)" />
+      <polygon points="18,21 34,12 34,30 18,39" fill="url(#cubeRightW)" />
+    </g>
+    <g transform="translate(162, 218)">
+      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTopW)" />
+      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeftW)" />
+      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRightW)" />
+    </g>
+    <g transform="translate(28, 242)">
+      <polygon points="20,4 38,13 20,23 2,13" fill="url(#cubeTopW)" />
+      <polygon points="2,13 20,23 20,43 2,33" fill="url(#cubeLeftW)" />
+      <polygon points="20,23 38,13 38,33 20,43" fill="url(#cubeRightW)" />
+    </g>
+    <g transform="translate(86, 316)">
+      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTopW)" />
+      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeftW)" />
+      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRightW)" />
+    </g>
+  </g>
+
+  <!-- RIGHT: 5-LINE CORPORATE TYPOGRAPHY LOCKUP (WHITE FOR DARK BACKGROUNDS) -->
+  <g id="typography-white" fill="#FFFFFF" font-family="'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+    <text x="400" y="122" font-size="64" font-weight="900" letter-spacing="-2.5px">
+      소울측량
+    </text>
+    <text x="398" y="232" font-size="124" font-weight="900" letter-spacing="-3px" font-family="'Pretendard', system-ui, -apple-system, sans-serif">
+      SOUL
+    </text>
+    <text x="402" y="296" font-size="46" font-weight="800" letter-spacing="11px">
+      SURVEYING
+    </text>
+    <text x="402" y="362" font-size="36" font-weight="800" letter-spacing="-0.8px" fill="#E2E8F0">
+      종합 측량 / 공간정보 서비스
+    </text>
+    <text x="404" y="408" font-size="20" font-weight="600" letter-spacing="0.5px" fill="#CBD5E1">
+      GENERAL SURVEYING &amp; GEOSPATIAL SOLUTIONS
+    </text>
+  </g>
+</svg>
