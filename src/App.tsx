@@ -226,7 +226,7 @@ export default function App() {
           </button>
         )}
         <a
-          href="tel:010-4842-7934"
+          href="tel:010-0000-0000"
           aria-label="전화 통화"
           className="w-12 h-12 rounded-full bg-emerald-800 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
         >

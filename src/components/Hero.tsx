@@ -65,11 +65,11 @@ export const Hero: React.FC = () => {
 
               <a
                 id="hero-phone-cta"
-                href="tel:010-4842-7934"
+                href="tel:010-0000-0000"
                 className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-sm font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 rounded-xl transition-colors"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>010-4842-7934</span>
+                <span>010-0000-0000</span>
               </a>
             </div>
 
@@ -144,11 +144,11 @@ export const Hero: React.FC = () => {
               <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-xs font-medium text-slate-500">실시간 직통 상담</span>
                 <a
-                  href="tel:010-4842-7934"
+                  href="tel:010-0000-0000"
                   className="text-xs font-bold text-slate-900 hover:text-emerald-700 flex items-center gap-1.5"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>010-4842-7934</span>
+                  <span>010-0000-0000</span>
                 </a>
               </div>
             </div>

@@ -1,168 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 120" width="460" height="120" fill="none">
   <defs>
-    <!-- S-Ribbon Gradient -->
-    <linearGradient id="sRibbonGrad" x1="50" y1="380" x2="330" y2="40" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#14465B" />
-      <stop offset="25%" stop-color="#1C6674" />
-      <stop offset="55%" stop-color="#2D8F7B" />
-      <stop offset="80%" stop-color="#51AB88" />
-      <stop offset="100%" stop-color="#72BE9B" />
+    <!-- Main S Flow Gradient -->
+    <linearGradient id="sGrad" x1="40" y1="410" x2="280" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#154e5b" />
+      <stop offset="22%" stop-color="#1b6877" />
+      <stop offset="48%" stop-color="#288f7a" />
+      <stop offset="72%" stop-color="#42aa86" />
+      <stop offset="92%" stop-color="#5fbe97" />
+      <stop offset="100%" stop-color="#70c49f" />
     </linearGradient>
 
-    <!-- Inner S-Ribbon Gradient -->
-    <linearGradient id="sInnerGrad" x1="60" y1="360" x2="310" y2="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#123B4E" />
-      <stop offset="30%" stop-color="#1B6D74" />
-      <stop offset="65%" stop-color="#34997E" />
-      <stop offset="100%" stop-color="#69B794" />
+    <!-- Hexagon Gradient Top/Right (Lighter Mint/Emerald) -->
+    <linearGradient id="hexGradLight" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2e967f" />
+      <stop offset="100%" stop-color="#6fc39e" />
     </linearGradient>
 
-    <!-- 3D Cube Facet Gradients -->
-    <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8DD8B1" />
-      <stop offset="100%" stop-color="#69BE95" />
+    <!-- Hexagon Gradient Bottom/Left (Deeper Teal) -->
+    <linearGradient id="hexGradDeep" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#17515e" />
+      <stop offset="100%" stop-color="#319981" />
     </linearGradient>
-    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4AA883" />
-      <stop offset="100%" stop-color="#30896B" />
-    </linearGradient>
-    <linearGradient id="cubeRight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#287C62" />
-      <stop offset="100%" stop-color="#195C46" />
-    </linearGradient>
-  </defs>
-
-  <!-- ======================================================= -->
-  <!-- LEFT: S-MARK WITH SURVEY TRIANGULATION NETWORK AND CUBES -->
-  <!-- ======================================================= -->
-  <g id="s-symbol">
-    <!-- Survey Triangulation Network Lines -->
-    <g stroke="#3A9476" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.75">
-      <!-- Top Cube to Top S-curve -->
-      <line x1="270" y1="42" x2="236" y2="120" />
-      <!-- Top Cube to Far Right Cube -->
-      <line x1="270" y1="42" x2="326" y2="195" />
-      <!-- Top S to Middle Arc -->
-      <line x1="236" y1="120" x2="276" y2="152" />
-      <!-- Far Right Cube to Center curve -->
-      <line x1="326" y1="195" x2="260" y2="238" />
-      <!-- Bottom Left Outer Cube to Lower S curve -->
-      <line x1="48" y1="262" x2="98" y2="255" />
-      <line x1="48" y1="262" x2="62" y2="340" />
+</defs>
+  <!-- S Symbol (scaled) -->
+  <g transform="translate(10, 8) scale(0.22)">
+    
+    <!-- Triangulation Network Lines -->
+    <g stroke="#265952" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.82">
+      <!-- Top Hexagon to Top Arc -->
+      <line x1="232" y1="32" x2="190" y2="64" />
+      <!-- Top Hexagon to Right Hexagon -->
+      <line x1="232" y1="32" x2="266" y2="124" />
+      <line x1="266" y1="124" x2="284" y2="222" />
+      <!-- Right Hexagon to Center Spine -->
+      <line x1="284" y1="222" x2="220" y2="252" />
+      <!-- Center Hexagon Network -->
+      <line x1="156" y1="268" x2="112" y2="238" />
+      <!-- Lower Left Hexagon Triangulation Lines -->
+      <line x1="26" y1="308" x2="78" y2="288" />
+      <line x1="26" y1="308" x2="44" y2="370" />
     </g>
 
-    <!-- Outer S Ribbon Track -->
-    <path
-      d="M 292,126
-         C 285,74 235,46 172,54
-         C 95,64 52,130 64,208
-         C 72,260 115,296 182,316
-         C 252,336 295,310 292,252
-         C 288,206 250,188 190,178
-         C 126,168 84,198 88,252
-         C 92,302 142,352 216,358
-         C 278,362 316,324 316,260
-         C 316,192 264,158 184,150
-         C 120,144 94,106 130,78
-         C 170,48 238,54 278,92"
-      fill="none"
-      stroke="url(#sRibbonGrad)"
-      stroke-width="19"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-
-    <!-- Inner Concentric S Ribbon Track -->
-    <path
-      d="M 264,136
-         C 255,92 216,74 168,80
-         C 108,88 78,142 86,204
-         C 94,248 132,278 188,296
-         C 248,314 276,294 274,250
-         C 270,214 240,200 186,190
-         C 134,180 106,204 108,246
-         C 110,286 150,326 210,332
-         C 260,336 292,306 292,256
-         C 292,202 250,172 186,166
-         C 134,160 114,128 142,106
-         C 174,82 226,88 256,118"
-      fill="none"
-      stroke="url(#sInnerGrad)"
-      stroke-width="11"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-
-    <!-- 3D CUBE 1: Top Apex Node -->
-    <g transform="translate(252, 14)">
-      <polygon points="18,3 34,12 18,21 2,12" fill="url(#cubeTop)" />
-      <polygon points="2,12 18,21 18,39 2,30" fill="url(#cubeLeft)" />
-      <polygon points="18,21 34,12 34,30 18,39" fill="url(#cubeRight)" />
+    
+    <!-- Curved Tracks of S -->
+    <g stroke="url(#sGrad)" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Outer Top Crown Arc -->
+      <path
+        d="M 142,105 C 152,72 184,58 226,62 C 242,64 252,72 258,84 C 265,96 264,108 252,114"
+        stroke-width="12"
+        fill="none"
+      />
+      <!-- Main Core S Ribbon -->
+      <path
+        d="M 276,134 C 278,124 272,112 256,104 C 235,92 195,94 152,118 C 114,140 88,180 94,226 C 100,268 136,298 184,332 C 228,362 245,394 235,420 C 220,455 160,465 106,442 C 72,426 50,394 44,360"
+        stroke-width="22"
+        fill="none"
+      />
+      <!-- Upper Inner Parallel Track -->
+      <path
+        d="M 188,64 C 150,70 120,95 110,132 C 100,172 120,204 152,230"
+        stroke-width="8"
+        fill="none"
+      />
+      <!-- Lower Inner Track -->
+      <path
+        d="M 152,268 C 182,295 210,326 215,358 C 220,388 205,412 176,424 C 145,435 108,425 82,398"
+        stroke-width="10"
+        fill="none"
+      />
+      <!-- Outermost Lower Sweeping Arc -->
+      <path
+        d="M 48,374 C 54,410 85,445 140,460 C 205,475 258,440 274,385 C 285,345 272,300 242,265"
+        stroke-width="12"
+        fill="none"
+      />
+      <!-- Bottom Lip Contour Arc -->
+      <path
+        d="M 55,424 C 84,452 135,468 188,460 C 225,452 254,428 266,392"
+        stroke-width="8"
+        fill="none"
+      />
     </g>
 
-    <!-- 3D CUBE 2: Upper Inner Loop Node -->
-    <g transform="translate(220, 102)">
-      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTop)" />
-      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeft)" />
-      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRight)" />
-    </g>
+    
+    <!-- 6 Geodetic Survey Benchmark Hexagons -->
+    <!-- Node 1: Top Apex -->
+    <polygon points="252,32 242,49 222,49 212,32 222,15 242,15" fill="url(#hexGradLight)" stroke="#1f5e52" stroke-width="1.8" />
+    <!-- Node 2: Upper Loop Interior -->
+    <polygon points="242,142 235,154 221,154 214,142 221,130 235,130" fill="url(#hexGradLight)" stroke="#1f5e52" stroke-width="1.6" />
+    <!-- Node 3: Middle-Right Apex -->
+    <polygon points="304,222 294,240 274,240 264,222 274,204 294,204" fill="url(#hexGradLight)" stroke="#1f5e52" stroke-width="1.8" />
+    <!-- Node 4: Center Spine Node -->
+    <polygon points="171,268 163.5,281 148.5,281 141,268 148.5,255 163.5,255" fill="url(#hexGradDeep)" stroke="#1b544b" stroke-width="1.6" />
+    <!-- Node 5: Lower-Left Outer Apex -->
+    <polygon points="46,308 36,325.5 16,325.5 6,308 16,290.5 36,290.5" fill="url(#hexGradDeep)" stroke="#174c43" stroke-width="1.8" />
+    <!-- Node 6: Lower Loop Interior -->
+    <polygon points="90,404 83,416 69,416 62,404 69,392 83,392" fill="url(#hexGradDeep)" stroke="#174c43" stroke-width="1.6" />
 
-    <!-- 3D CUBE 3: Middle Right Apex Node -->
-    <g transform="translate(308, 178)">
-      <polygon points="18,3 34,12 18,21 2,12" fill="url(#cubeTop)" />
-      <polygon points="2,12 18,21 18,39 2,30" fill="url(#cubeLeft)" />
-      <polygon points="18,21 34,12 34,30 18,39" fill="url(#cubeRight)" />
-    </g>
-
-    <!-- 3D CUBE 4: Center Spine Node -->
-    <g transform="translate(162, 218)">
-      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTop)" />
-      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeft)" />
-      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRight)" />
-    </g>
-
-    <!-- 3D CUBE 5: Bottom Left Apex Node -->
-    <g transform="translate(28, 242)">
-      <polygon points="20,4 38,13 20,23 2,13" fill="url(#cubeTop)" />
-      <polygon points="2,13 20,23 20,43 2,33" fill="url(#cubeLeft)" />
-      <polygon points="20,23 38,13 38,33 20,43" fill="url(#cubeRight)" />
-    </g>
-
-    <!-- 3D CUBE 6: Bottom Inner Loop Node -->
-    <g transform="translate(86, 316)">
-      <polygon points="16,3 30,11 16,19 2,11" fill="url(#cubeTop)" />
-      <polygon points="2,11 16,19 16,35 2,27" fill="url(#cubeLeft)" />
-      <polygon points="16,19 30,11 30,27 16,35" fill="url(#cubeRight)" />
-    </g>
   </g>
-
-  <!-- ======================================================= -->
-  <!-- RIGHT: 5-LINE CORPORATE TYPOGRAPHY LOCKUP -->
-  <!-- ======================================================= -->
-  <g id="typography" fill="#0A2540" font-family="'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
-    <!-- Line 1: 소울측량 -->
-    <text x="400" y="122" font-size="64" font-weight="900" letter-spacing="-2.5px">
+  <!-- Typography Lockup (Light Background) -->
+  <g font-family="'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', sans-serif">
+    <!-- Main Name: 소울측량 -->
+    <text x="98" y="58" font-size="38" font-weight="900" fill="#0F172A" letter-spacing="-1px">
       소울측량
     </text>
-
-    <!-- Line 2: SOUL -->
-    <text x="398" y="232" font-size="124" font-weight="900" letter-spacing="-3px" font-family="'Pretendard', system-ui, -apple-system, sans-serif">
-      SOUL
+    <!-- Accent Pill / Badge -->
+    <rect x="245" y="32" width="74" height="22" rx="4" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+    <text x="282" y="47" font-size="11" font-weight="700" fill="#047857" text-anchor="middle">
+      종합측량
     </text>
-
-    <!-- Line 3: SURVEYING -->
-    <text x="402" y="296" font-size="46" font-weight="800" letter-spacing="11px">
-      SURVEYING
+    <!-- English Name: SOUL SURVEY -->
+    <text x="100" y="84" font-size="14" font-weight="800" fill="#059669" letter-spacing="4px">
+      SOUL SURVEY
     </text>
-
-    <!-- Line 4: 종합 측량 / 공간정보 서비스 -->
-    <text x="402" y="362" font-size="36" font-weight="800" letter-spacing="-0.8px">
-      종합 측량 / 공간정보 서비스
-    </text>
-
-    <!-- Line 5: GENERAL SURVEYING & GEOSPATIAL SOLUTIONS -->
-    <text x="404" y="408" font-size="20" font-weight="600" letter-spacing="0.5px">
-      GENERAL SURVEYING &amp; GEOSPATIAL SOLUTIONS
+    <!-- Subtitle: 공간정보 · 드론 · 인허가 -->
+    <text x="100" y="104" font-size="11" font-weight="500" fill="#64748B" letter-spacing="0.2px">
+      일반측량 · 지형현황 · 경계복원 · 공간정보
     </text>
   </g>
 </svg>
