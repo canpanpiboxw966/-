@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
-import { Phone, Lock, Menu, X, ArrowRight, FileText } from 'lucide-react';
+import { Phone, Lock, Menu, X, ArrowRight, ChevronRight, MessageSquare } from 'lucide-react';
 
 interface HeaderProps {
   onOpenAdmin: () => void;
@@ -19,6 +19,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on resize to PC
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const navItems = [
     { label: '회사소개', href: '#about' },
     { label: '주요실적', href: '#portfolio' },
@@ -30,41 +41,41 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
   return (
     <header
       id="main-header"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-          : 'bg-white/80 backdrop-blur-sm border-b border-slate-200/40 py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5 sm:py-3'
+          : 'bg-white/85 backdrop-blur-sm border-b border-slate-200/50 py-3 sm:py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center group transition-transform hover:opacity-95">
+        {/* Brand Logo (Responsive sizing) */}
+        <a href="#" className="flex items-center group transition-transform active:scale-98">
           <SoulSurveyLogo variant="horizontal" size="md" />
         </a>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links (PC Only) */}
         <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="px-3.5 py-2 text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100/70 rounded-lg transition-colors"
+              className="px-3.5 py-2 text-sm font-bold text-slate-700 hover:text-emerald-800 hover:bg-slate-100/80 rounded-xl transition-colors"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        {/* Right CTA Area: Phone Call + Admin Gate + Quick Quote */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        {/* Right CTA Area for Tablet / PC */}
+        <div className="hidden md:flex items-center gap-2.5">
           {/* Direct Phone Call */}
           <a
             id="header-phone-btn"
             href="tel:010-0000-0000"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 rounded-lg transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl transition-colors"
             title="대표 번호 직통 통화"
           >
-            <Phone className="w-3.5 h-3.5 text-emerald-600" />
+            <Phone className="w-3.5 h-3.5 text-emerald-700" />
             <span>010-0000-0000</span>
           </a>
 
@@ -72,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
           <a
             id="header-inquiry-btn"
             href="#contact"
-            className="flex items-center gap-1 px-3.5 py-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-700 rounded-lg shadow-sm transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 text-xs font-extrabold text-white bg-slate-900 hover:bg-emerald-800 rounded-xl shadow-xs transition-all active:scale-98"
           >
             <span>측량 견적문의</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -82,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
           <button
             id="header-admin-btn"
             onClick={onOpenAdmin}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-2 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors"
             title="관리자 모드"
             aria-label="관리자 로그인"
           >
@@ -90,65 +101,78 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
           </button>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <div className="flex sm:hidden items-center gap-2">
+        {/* Mobile Action Controls (Mobile & Small Tablet) */}
+        <div className="flex md:hidden items-center gap-1.5">
+          {/* Quick Call Button on Mobile */}
           <a
             href="tel:010-0000-0000"
-            className="p-2 text-emerald-700 bg-emerald-50 rounded-lg border border-emerald-100"
+            className="p-2.5 text-emerald-800 bg-emerald-50 active:bg-emerald-100 rounded-xl border border-emerald-200 flex items-center justify-center min-w-[44px] min-h-[44px]"
             aria-label="전화 연결"
           >
             <Phone className="w-4 h-4" />
           </a>
+
+          {/* Mobile Hamburger Toggle Button */}
           <button
             id="mobile-menu-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-700 hover:bg-slate-100 rounded-lg"
-            aria-label="메뉴 열기"
+            className="p-2.5 text-slate-800 hover:bg-slate-100 active:bg-slate-200 rounded-xl min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors border border-slate-200"
+            aria-label={mobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown (Touch-friendly 1-Col layout) */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-lg">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2.5 text-base font-medium text-slate-800 hover:bg-slate-50 hover:text-emerald-700 rounded-lg"
-            >
-              {item.label}
-            </a>
-          ))}
-          <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <div className="md:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-2 duration-200">
+          <nav className="space-y-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between px-4 py-3.5 text-base font-bold text-slate-800 hover:bg-slate-50 hover:text-emerald-800 rounded-xl active:bg-slate-100 transition-colors"
+              >
+                <span>{item.label}</span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile Quick Action Buttons */}
+          <div className="pt-4 mt-3 border-t border-slate-100 space-y-2.5">
             <a
               href="tel:010-0000-0000"
-              className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold text-slate-800 bg-slate-100 rounded-lg"
+              className="flex items-center justify-center gap-2 py-3.5 px-4 text-sm font-bold text-slate-900 bg-slate-100 active:bg-slate-200 rounded-xl border border-slate-200/80 w-full min-h-[46px]"
             >
-              <Phone className="w-4 h-4 text-emerald-600" />
+              <Phone className="w-4 h-4 text-emerald-700" />
               <span>전화문의: 010-0000-0000</span>
             </a>
+
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold text-white bg-slate-900 rounded-lg"
+              className="flex items-center justify-center gap-2 py-3.5 px-4 text-sm font-extrabold text-white bg-slate-900 active:bg-emerald-800 rounded-xl w-full min-h-[46px] shadow-sm"
             >
+              <MessageSquare className="w-4 h-4" />
               <span>온라인 측량 상담신청</span>
-              <ArrowRight className="w-4 h-4" />
             </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAdmin();
-              }}
-              className="flex items-center justify-center gap-1.5 py-2 text-xs text-slate-500 hover:text-slate-800"
-            >
-              <Lock className="w-3.5 h-3.5" />
-              <span>관리자 모드</span>
-            </button>
+
+            <div className="flex justify-center pt-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAdmin();
+                }}
+                className="flex items-center gap-1.5 py-2 px-3 text-xs font-semibold text-slate-500 hover:text-slate-800"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>관리자 로그인</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

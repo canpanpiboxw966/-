@@ -109,32 +109,32 @@ export const Portfolio: React.FC<PortfolioProps> = ({
             </p>
           </div>
 
-          {/* Primary View Switcher Tabs */}
-          <div className="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 self-start md:self-auto">
+          {/* Primary View Switcher Tabs (Responsive: Full width & 44px touch targets on mobile, compact on PC) */}
+          <div className="w-full md:w-auto flex p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
             <button
               id="tab-experience-btn"
               onClick={() => setActiveTab('experience')}
-              className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all ${
+              className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
                 activeTab === 'experience'
                   ? 'bg-white text-emerald-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Briefcase className="w-4 h-4 text-emerald-700" />
+              <Briefcase className="w-4 h-4 text-emerald-700 flex-shrink-0" />
               <span>대표자 참여 경력</span>
             </button>
             <button
               id="tab-company-btn"
               onClick={() => setActiveTab('company')}
-              className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all ${
+              className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
                 activeTab === 'company'
                   ? 'bg-white text-emerald-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Building2 className="w-4 h-4 text-emerald-700" />
-              <span>회사 수행실적 (SOUL SURVEY)</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <Building2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+              <span>회사 수행실적</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
             </button>
           </div>
         </div>
