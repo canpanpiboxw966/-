@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Compass, PhoneCall, ChevronDown, Box, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Compass, PhoneCall, ChevronDown, Box, Sparkles, MapPin, Radio } from 'lucide-react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
+import heroMiniatureImg from '../assets/images/survey_miniature_hero_cube_1789151725760.jpg';
 
 export const Hero: React.FC = () => {
   return (
@@ -24,9 +25,9 @@ export const Hero: React.FC = () => {
           {/* Left Hero Column */}
           <div className="lg:col-span-7">
             {/* Slogan Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold mb-5 sm:mb-6 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>작지만 가까운 측량 파트너 · 20년+ 현장 경험</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold mb-5 sm:mb-6 shadow-2xs">
+              <Box className="w-3.5 h-3.5 text-emerald-700" />
+              <span>3D 정밀 디오라마 감성 · 작지만 가장 가까운 측량 파트너</span>
             </div>
 
             {/* Main Headline */}
@@ -39,8 +40,8 @@ export const Hero: React.FC = () => {
 
             {/* Subtext */}
             <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl font-normal">
-              현장의 조건과 필요한 성과물을 먼저 꼼꼼히 살펴보고 가장 적합한 측량방법을 함께 검토합니다. 
-              설계사무소, 건설사, 현장 담당자가 전화 한 통으로 상황을 설명하면 즉시 이해하고 실질적인 해결책을 찾아드립니다.
+              복잡하고 어려운 토목 측량이 아닙니다. 정교한 3D 미니어처 블록을 맞추듯, 
+              현장의 조건과 필요한 성과물을 대표자가 직접 살펴보고 가장 명쾌한 해결책을 찾아드립니다.
             </p>
 
             {/* Primary Action Buttons: Mobile 1-col (stacked, full-width) -> Desktop flex row */}
@@ -107,49 +108,69 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Official Brand Identity Card with 3D Miniature Touch */}
+          {/* Right Column: 3D Miniature Diorama Showcase Box */}
           <div className="lg:col-span-5">
-            <div className="bg-gradient-to-b from-slate-50 via-white to-emerald-50/30 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm relative overflow-hidden">
-              <div className="text-[11px] font-bold text-emerald-800 tracking-wider uppercase mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <Box className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>OFFICIAL IDENTITY & PRECISION</span>
+            <div className="bg-gradient-to-b from-slate-50 via-white to-emerald-50/40 rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-md relative overflow-hidden group">
+              {/* Header inside the box */}
+              <div className="flex items-center justify-between gap-2 pb-3 mb-3.5 border-b border-slate-100">
+                <div className="flex items-center gap-1.5 text-xs font-extrabold text-emerald-900">
+                  <Box className="w-4 h-4 text-emerald-700" />
+                  <span>3D SURVEY MODEL DIORAMA</span>
                 </div>
-                <span className="text-slate-400 font-mono font-normal">EST. 2004</span>
-              </div>
-
-              {/* Exact Logo Box */}
-              <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-2xs flex items-center justify-center mb-5">
-                <SoulSurveyLogo size="xl" className="w-full justify-center" />
-              </div>
-
-              {/* Specs: Clean 1-col items */}
-              <div className="space-y-2 text-xs text-slate-600">
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-400 font-medium">전문분야</span>
-                  <span className="font-bold text-slate-800">일반측량 · 공사측량 · GNSS · 드론</span>
-                </div>
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-400 font-medium">현장 총괄</span>
-                  <span className="font-bold text-emerald-800">20년+ 베테랑 기술자 직접 답사</span>
-                </div>
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-400 font-medium">성과품 포맷</span>
-                  <span className="font-bold text-slate-800">CAD (DWG/DXF), 수치지형도, 성과조서</span>
-                </div>
-                <div className="flex items-center justify-between py-2">
-                  <span className="text-slate-400 font-medium">서비스 지역</span>
-                  <span className="font-bold text-slate-800">수도권 전역 및 전국 주요 현장 출장</span>
-                </div>
-              </div>
-
-              {/* Miniature Trust Tag */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                <span className="flex items-center gap-1 text-emerald-700 font-bold">
-                  <Sparkles className="w-3 h-3" />
-                  <span>현장 맞춤 1:1 직통 소통</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100/80 text-emerald-800 font-bold">
+                  RTK-GPS LINKED
                 </span>
-                <span className="font-mono text-[10px] text-slate-400">STATUS: READY</span>
+              </div>
+
+              {/* 3D Miniature Hero Image with Floating Elements */}
+              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 mb-4">
+                <img 
+                  src={heroMiniatureImg} 
+                  alt="소울측량 3D 미니어처 현장" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+
+                {/* Floating Top Coordinate Pill */}
+                <div className="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-md text-white px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>ACCURACY: ±0.005m</span>
+                </div>
+
+                {/* Bottom Logo Overlay */}
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 bg-white/95 backdrop-blur-md px-3 py-2 rounded-xl border border-white/80 flex items-center justify-between text-xs shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <SoulSurveyLogo size="sm" />
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-600 font-mono">
+                    1:500 CAD READY
+                  </span>
+                </div>
+              </div>
+
+              {/* Specs: 1-col items in Miniature Cube Style */}
+              <div className="space-y-1.5 text-xs text-slate-600 bg-white p-3.5 rounded-xl border border-slate-100">
+                <div className="flex items-center justify-between py-1">
+                  <span className="text-slate-400 font-medium">현장 책임자</span>
+                  <span className="font-bold text-slate-800">대표 측량사 100% 직수행</span>
+                </div>
+                <div className="flex items-center justify-between py-1 border-t border-slate-50">
+                  <span className="text-slate-400 font-medium">납품 포맷</span>
+                  <span className="font-bold text-emerald-800">CAD (DWG/DXF) + 성과조서</span>
+                </div>
+                <div className="flex items-center justify-between py-1 border-t border-slate-50">
+                  <span className="text-slate-400 font-medium">적용 분야</span>
+                  <span className="font-bold text-slate-800">대지경계 · 현황 · 인허가 · 공사</span>
+                </div>
+              </div>
+
+              {/* Bottom Tag */}
+              <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 font-medium px-1">
+                <span className="flex items-center gap-1 text-emerald-800 font-bold">
+                  <Sparkles className="w-3 h-3 text-emerald-600" />
+                  <span>현장 맞춤형 신속 견적</span>
+                </span>
+                <span className="font-mono text-[10px] text-slate-400">EST. 2004</span>
               </div>
             </div>
           </div>
