@@ -381,10 +381,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                           </div>
 
                           <div className="divide-y divide-slate-100 max-h-[460px] overflow-y-auto">
-                            {category.projects.map((proj, pIdx) => {
+                            {(category.projects || []).map((proj, pIdx) => {
                               // Check if there is an image for this project
+                              const projName = proj?.name || '';
                               const matchingImg = category.images?.find(
-                                img => img.title.includes(proj.name) || proj.name.includes(img.title)
+                                img => {
+                                  const imgTitle = img?.title || '';
+                                  if (!imgTitle || !projName) return false;
+                                  return imgTitle.includes(projName) || projName.includes(imgTitle);
+                                }
                               );
 
                               return (
@@ -605,7 +610,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                     주요 작업 범위 (Scope of Work)
                   </h4>
                   <ul className="space-y-2">
-                    {activeProjectModal.scope.map((item, idx) => (
+                    {(activeProjectModal.scope || []).map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2 flex-shrink-0" />
                         <span>{item}</span>
@@ -618,7 +623,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                   <div>
                     <h5 className="text-xs font-bold text-slate-900 mb-2">투입 장비 및 기술</h5>
                     <div className="flex flex-wrap gap-1.5">
-                      {activeProjectModal.equipment.map((eq, i) => (
+                      {(activeProjectModal.equipment || []).map((eq, i) => (
                         <span key={i} className="text-[11px] px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md font-medium">
                           {eq}
                         </span>
@@ -628,7 +633,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                   <div>
                     <h5 className="text-xs font-bold text-slate-900 mb-2">납품 성과품</h5>
                     <div className="flex flex-wrap gap-1.5">
-                      {activeProjectModal.deliverables.map((del, i) => (
+                      {(activeProjectModal.deliverables || []).map((del, i) => (
                         <span key={i} className="text-[11px] px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-md font-medium">
                           {del}
                         </span>

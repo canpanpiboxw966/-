@@ -21,19 +21,29 @@ export default function App() {
     try {
       const saved = localStorage.getItem('soul_survey_past_categories');
       if (saved) {
-        const parsed = JSON.parse(saved) as PastProjectCategory[];
-        // Sanitize: remove any outdated broken /images/projects/ paths
-        return parsed.map(c => ({
-          ...c,
-          representativeImage: {
-            ...c.representativeImage,
-            url: c.id === 'court' 
-              ? '/court-badge.svg' 
-              : (c.representativeImage?.url?.includes('/images/projects/') ? '' : c.representativeImage?.url || '')
-          },
-          images: (c.images || [])
-            .filter(img => !img.url?.includes('/images/projects/'))
-        }));
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const validated = parsed.map((c: any) => {
+            if (!c || typeof c !== 'object') return null;
+            return {
+              ...c,
+              categoryName: c.categoryName || '측량 분야',
+              projects: Array.isArray(c.projects) ? c.projects : [],
+              clients: Array.isArray(c.clients) ? c.clients : [],
+              representativeImage: {
+                title: c.representativeImage?.title || c.representativeTitle || '',
+                url: c.id === 'court' 
+                  ? `${import.meta.env.BASE_URL}court-badge.svg` 
+                  : (c.representativeImage?.url?.includes('/images/projects/') ? '' : c.representativeImage?.url || ''),
+                alt: c.representativeImage?.alt || ''
+              },
+              images: Array.isArray(c.images) 
+                ? c.images.filter((img: any) => img && img.url && !img.url.includes('/images/projects/'))
+                : []
+            };
+          }).filter(Boolean) as PastProjectCategory[];
+          if (validated.length > 0) return validated;
+        }
       }
       return INITIAL_PAST_CATEGORIES;
     } catch {
@@ -85,7 +95,13 @@ export default function App() {
   const [companyProjects, setCompanyProjects] = useState<CompanyProject[]>(() => {
     try {
       const saved = localStorage.getItem('soul_survey_company_projects');
-      return saved ? JSON.parse(saved) : INITIAL_COMPANY_PROJECTS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+      return INITIAL_COMPANY_PROJECTS;
     } catch {
       return INITIAL_COMPANY_PROJECTS;
     }
@@ -94,7 +110,13 @@ export default function App() {
   const [inquiries, setInquiries] = useState<InquiryRecord[]>(() => {
     try {
       const saved = localStorage.getItem('soul_survey_inquiries');
-      return saved ? JSON.parse(saved) : [];
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed;
+        }
+      }
+      return [];
     } catch {
       return [];
     }

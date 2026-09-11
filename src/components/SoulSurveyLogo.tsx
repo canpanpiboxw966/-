@@ -39,12 +39,14 @@ export const SoulSurveyLogo: React.FC<LogoProps> = ({
     xl: 'text-sm sm:text-base'
   };
 
+  const symbolSrc = `${import.meta.env.BASE_URL}logo-symbol.svg`;
+
   // If icon-only variant
   if (variant === 'icon') {
     return (
       <div className={`inline-flex items-center justify-center select-none ${className}`}>
         <img
-          src="/logo-symbol.svg"
+          src={symbolSrc}
           alt="소울측량 심볼마크"
           className={`${symbolSizes[size]} object-contain drop-shadow-xs`}
           referrerPolicy="no-referrer"
@@ -58,7 +60,7 @@ export const SoulSurveyLogo: React.FC<LogoProps> = ({
     return (
       <div className={`inline-flex flex-col items-center text-center select-none ${className}`}>
         <img
-          src="/logo-symbol.svg"
+          src={symbolSrc}
           alt="소울측량 심볼마크"
           className={`${symbolSizes[size]} object-contain mb-3 drop-shadow-xs`}
           referrerPolicy="no-referrer"
@@ -90,7 +92,7 @@ export const SoulSurveyLogo: React.FC<LogoProps> = ({
       {/* 1. Official Geodetic S-Mark Symbol */}
       <div className="relative flex-shrink-0 flex items-center justify-center">
         <img
-          src="/logo-symbol.svg"
+          src={symbolSrc}
           alt="소울측량 심볼"
           className={`${symbolSizes[size]} object-contain`}
           referrerPolicy="no-referrer"
