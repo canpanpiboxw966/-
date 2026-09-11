@@ -244,17 +244,10 @@ export const INITIAL_PAST_CATEGORIES: PastProjectCategory[] = [
     primaryClient: '대한민국 법원',
     representativeImage: {
       title: '대한민국 법원 감정측량',
-      url: '/court-badge.svg',
+      url: '',
       alt: '대한민국 법원 감정측량'
     },
-    images: [
-      {
-        title: '법원감정측량 (대한민국 법원)',
-        url: '/court-badge.svg',
-        description: '대한민국 법원 등록 측량감정인(재판조력자) 감정업무',
-        tag: '법원감정측량'
-      }
-    ],
+    images: [],
     description: '법원에 등록된 측량감정인(재판조력자)으로 토지 경계 분쟁, 소유권 확인, 목적물 현황 등 사법 재판관련 전문 측량 감정업무를 수행합니다.',
     clients: [
       '서울중앙지방법원',
@@ -280,103 +273,8 @@ export const INITIAL_PAST_CATEGORIES: PastProjectCategory[] = [
   }
 ];
 
-export const INITIAL_COMPANY_PROJECTS: CompanyProject[] = [
-  {
-    id: 'soul-proj-01',
-    title: '화성시 복합물류센터 신축부지 정밀 지형현황 및 기준점측량',
-    category: '지형현황측량',
-    client: '건축사사무소 다온',
-    location: '경기도 화성시 장안면 일원 (부지면적 18,400㎡)',
-    period: '2024.11 ~ 2024.12',
-    summary: '설계 인허가 신청을 위한 1/500 수치지형도 작성, 국가기준점 연계 통합기준점(TBM) 매설 및 주변 인접도로 레벨 정밀 조사',
-    scope: [
-      '국가 GNSS 상시관측소 연계 단독 기준점 3개소 매설 및 절대좌표 산출',
-      '설계용 1/500 상세 수치지형도(CAD dwg) 작성 및 등고선(0.5m 간격) 추출',
-      '인접 군도 접속구간 종·횡단 측량 (계획 도로계획고 검토용)',
-      '현장 내 지하매설관로(우수/오수/상수도) 맨홀 인벌트 레벨 실측'
-    ],
-    equipment: ['Trimble GNSS 수신기 (VRS-RTK)', 'Leica 전자평판 토털스테이션', '정밀 전자레벨'],
-    deliverables: ['1/500 CAD 수치지형도(dwg)', '기준점 조서 및 점의위치도', '종·횡단면도', '측량성과품 보고서'],
-    featuredImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80',
-    isFeatured: true
-  },
-  {
-    id: 'soul-proj-02',
-    title: '성남시 판교 테크노밸리 인근 근린생활시설 신축 토공 공사측량',
-    category: '공사측량',
-    client: '(주)제이앤비건설',
-    location: '경기도 성남시 분당구 삼평동 (지하 2층 ~ 지상 5층)',
-    period: '2024.10 ~ 2025.01',
-    summary: '도심 밀집지 CIP 흙막이 가시설 벽체 변위 모니터링, 터파기 단계별 굴착고 검측 및 기초 파일 항타 위치 정밀 먹매김',
-    scope: [
-      '대지 경계선 이격거리 확인 및 건축한계선 검측',
-      '흙막이 띠장 레벨 및 토공사 단계별 반출 토량 검측',
-      '기초 PHC 파일 48공 중심점 위치 오차 10mm 이내 정밀 측설',
-      '주변 도로 및 인접 건물 외벽 계측 타겟 부착 및 변위 계측'
-    ],
-    equipment: ['Leica 1초독 토털스테이션', '디지털 레이저 레벨', '반사시트 프리즘'],
-    deliverables: ['공사 검측 체크리스트', '파일 항타 편차도', '토공량 산출서(Before/After)', '현장 사진대지'],
-    featuredImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
-    isFeatured: true
-  },
-  {
-    id: 'soul-proj-03',
-    title: '용인시 처인구 전원주택단지 부지조성 드론 항공측량 및 토공량 분석',
-    category: '드론/GNSS',
-    client: '마루개발(주)',
-    location: '경기도 용인시 처인구 양지면 (개발면적 32,000㎡)',
-    period: '2025.01',
-    summary: '급경사 산지형 개발부지의 사각지대를 드론 고해상도 매핑으로 극복하고, 3D 점군 데이터 기반 깎기/채우기 토공 균형 분석 수행',
-    scope: [
-      '지상 기준점(GCP) 12개소 GNSS 정밀 측위 및 대공표지 설치',
-      'RTK 드론 자동 비행 촬영 (GSD 1.8cm/pixel 고해상도)',
-      '정사영상(Orthomosaic) 및 3D 수치표고모델(DEM) 생성',
-      '단지 단차 계획에 따른 절토량·성토량 3차원 그리드 산정'
-    ],
-    equipment: ['DJI Mavic 3 Enterprise RTK', 'Trimble R12 GNSS 수신기', 'Pix4D / Civil 3D'],
-    deliverables: ['고해상도 정사영상(GeoTIFF)', '3D 포인트클라우드(LAS)', '등고선도 및 토공량 산출서'],
-    featuredImage: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80',
-    isFeatured: true
-  },
-  {
-    id: 'soul-proj-04',
-    title: '양평군 남한강 지류 소하천 정비사업 실시설계 하천측량',
-    category: '하천측량',
-    client: '(주)한국엔지니어링',
-    location: '경기도 양평군 개군면 (하천연장 L=1.8km)',
-    period: '2024.09 ~ 2024.10',
-    summary: '소하천 제방 보강 및 수해 예방 설계를 위한 20m 간격 정밀 종·횡단측량 및 수위표 기준점 설치',
-    scope: [
-      '하천 중심선 측량 및 20m 정구간 종단측량 (연장 1.8km)',
-      '하상 및 제방 횡단측량 (좌·우안 제방 법면 및 제외지 전수 조사)',
-      '수문 및 암거 등 기존 하천공작물 실측',
-      '주요 교량 지점 최고수위흔적(H.W.L) 현장 조사'
-    ],
-    equipment: ['GNSS Network RTK', '토털스테이션', '폴대용 수중 프리즘'],
-    deliverables: ['하천 종단면도', '하천 횡단면도', '지형현황 평면도', '하천공작물 조서'],
-    featuredImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
-    isFeatured: false
-  },
-  {
-    id: 'soul-proj-05',
-    title: '수원시 팔달구 노후 옹벽 및 도로 구조물 안전진단 유지관리측량',
-    category: '시설물유지관리',
-    client: '건축사사무소 예원',
-    location: '경기도 수원시 팔달구 매산로 (석축 옹벽 H=4~6m, L=85m)',
-    period: '2024.12',
-    summary: '우기 전 절개지 보강옹벽의 배부름 현상 및 수평·수직 변위를 1mm 단위로 정밀 계측하여 보수보강 설계 데이터 제공',
-    scope: [
-      '절대 부동 기준점 2개소 설치 후 기준 좌표계 설정',
-      '옹벽 전면 모니터링 타겟 24개소 정밀 3차원 위치 측정',
-      '기존 도면 대비 최대 변위량(기울기 및 전도 여부) 산출',
-      '도로 노면 크랙 진행구간 레벨 단차 측정'
-    ],
-    equipment: ['초정밀 0.5초 토털스테이션', '모니터링 미니 프리즘', '전자레벨'],
-    deliverables: ['변위 벡터 분석도', '단면별 기울기 산출표', '계측 성과 종합보고서'],
-    featuredImage: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
-    isFeatured: false
-  }
-];
+// Initial company projects start completely empty as requested by user
+export const INITIAL_COMPANY_PROJECTS: CompanyProject[] = [];
 
 export const SERVICES_DATA: ServiceDetail[] = [
   {

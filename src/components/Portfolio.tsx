@@ -478,75 +478,113 @@ export const Portfolio: React.FC<PortfolioProps> = ({
             </div>
 
             {/* Category Filter Chips */}
-            <div className="flex flex-wrap items-center gap-1.5 mb-6">
-              {categoriesFilterList.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedFilter(cat)}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-                    selectedFilter === cat
-                      ? 'bg-slate-900 text-white shadow-2xs'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+            {companyProjects.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5 mb-6">
+                {categoriesFilterList.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedFilter(cat)}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
+                      selectedFilter === cat
+                        ? 'bg-slate-900 text-white shadow-2xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            )}
 
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredCompanyProjects.map((project) => (
-                <div
-                  key={project.id}
-                  onClick={() => setActiveProjectModal(project)}
-                  className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-emerald-400 transition-all cursor-pointer flex flex-col group"
-                >
-                  {/* Thumbnail Image */}
-                  <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
-                    <img
-                      src={project.featuredImage}
-                      alt={project.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 text-[11px] font-bold rounded bg-slate-900/85 backdrop-blur-xs text-white">
-                        {project.category}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-3 right-3 text-[11px] text-white bg-slate-900/70 px-2 py-0.5 rounded font-mono">
-                      {project.period}
-                    </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-1.5">
-                        <MapPin className="w-3.5 h-3.5 text-emerald-700 flex-shrink-0" />
-                        <span className="line-clamp-1">{project.location}</span>
-                      </div>
-                      <h4 className="text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-snug mb-2 line-clamp-2">
-                        {project.title}
-                      </h4>
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-4">
-                        {project.summary}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <span className="text-slate-500">발주: {project.client}</span>
-                      <span className="font-semibold text-emerald-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                        <span>상세보기</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </div>
+            {/* Projects Grid or Clean Empty State */}
+            {filteredCompanyProjects.length === 0 ? (
+              <div className="text-center py-16 px-6 bg-slate-50 rounded-2xl border border-dashed border-slate-300 max-w-2xl mx-auto my-6">
+                <div className="w-14 h-14 bg-white rounded-2xl border border-slate-200 shadow-xs flex items-center justify-center mx-auto mb-4 text-emerald-800">
+                  <Building2 className="w-7 h-7" />
                 </div>
-              ))}
-            </div>
+                <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
+                  신규 현장 실적이 곧 업데이트될 예정입니다
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto mb-6">
+                  과장된 샘플이 아닌, 소울측량이 직접 수행한 검증된 최신 현장만을 투명하게 등록해 나갈 예정입니다. 
+                  대표자의 16년+ 정밀 측량 경력은 상단의 <strong>[대표자 참여경력 (7개 분야)]</strong> 탭에서 언제든지 상세히 확인하실 수 있습니다.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    onClick={() => setActiveTab('experience')}
+                    className="px-4 py-2 text-xs font-bold text-slate-800 bg-white border border-slate-300 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                  >
+                    대표자 참여경력 (7개 분야) 보러가기
+                  </button>
+                  <a
+                    href="#contact"
+                    className="px-4 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors"
+                  >
+                    새로운 현장 의뢰하기
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredCompanyProjects.map((project) => (
+                  <div
+                    key={project.id}
+                    onClick={() => setActiveProjectModal(project)}
+                    className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md hover:border-emerald-400 transition-all cursor-pointer flex flex-col group"
+                  >
+                    {/* Thumbnail Image */}
+                    <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
+                      {project.featuredImage ? (
+                        <img
+                          src={project.featuredImage}
+                          alt={project.title}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-400">
+                          <Building2 className="w-10 h-10 mb-1 text-slate-300" />
+                          <span className="text-[11px] font-medium text-slate-500">현장 기록 사진</span>
+                        </div>
+                      )}
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2.5 py-1 text-[11px] font-bold rounded bg-slate-900/85 backdrop-blur-xs text-white">
+                          {project.category}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 right-3 text-[11px] text-white bg-slate-900/70 px-2 py-0.5 rounded font-mono">
+                        {project.period}
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-emerald-700 flex-shrink-0" />
+                          <span className="line-clamp-1">{project.location}</span>
+                        </div>
+                        <h4 className="text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-snug mb-2 line-clamp-2">
+                          {project.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                          {project.summary}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span className="text-slate-500">발주: {project.client}</span>
+                        <span className="font-semibold text-emerald-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                          <span>상세보기</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

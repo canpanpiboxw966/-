@@ -28,6 +28,7 @@ import {
 } from '../utils/photoStorage';
 import { PastProjectCategory } from '../types';
 import { getAdminPassword } from '../config/adminConfig';
+import { compressAndResizeImage } from '../utils/imageCompressor';
 
 interface PhotoUploaderModalProps {
   isOpen: boolean;
@@ -178,7 +179,7 @@ export const PhotoUploaderModal: React.FC<PhotoUploaderModalProps> = ({
 
     for (const file of files) {
       try {
-        const dataUrl = await readFileAsDataUrl(file);
+        const dataUrl = await compressAndResizeImage(file, 1200, 1200, 0.8);
         const match = matchFilenameToCategory(file.name);
         const catId = targetCategoryId || match.categoryId;
 
@@ -253,7 +254,7 @@ export const PhotoUploaderModal: React.FC<PhotoUploaderModalProps> = ({
     setIsProcessing(true);
 
     try {
-      const dataUrl = await readFileAsDataUrl(file);
+      const dataUrl = await compressAndResizeImage(file, 1200, 1200, 0.8);
       const cleanTitle = file.name.replace(/\.[^/.]+$/, '');
       const catId = replaceTarget.catId;
 

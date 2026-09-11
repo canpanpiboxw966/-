@@ -100,6 +100,26 @@ export async function deletePhotosByUrl(dataUrl: string): Promise<void> {
   }
 }
 
+export async function bulkImportPhotos(photos: StoredPhoto[]): Promise<void> {
+  if (!photos || photos.length === 0) return;
+  try {
+    const db = await openPhotoDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      const store = tx.objectStore(STORE_NAME);
+      for (const p of photos) {
+        if (p && p.id && p.dataUrl) {
+          store.put(p);
+        }
+      }
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  } catch (err) {
+    console.error('Failed to bulk import photos to IndexedDB:', err);
+  }
+}
+
 export async function clearAllPhotos(): Promise<void> {
   try {
     const db = await openPhotoDB();

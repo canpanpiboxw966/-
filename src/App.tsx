@@ -31,14 +31,12 @@ export default function App() {
               projects: Array.isArray(c.projects) ? c.projects : [],
               clients: Array.isArray(c.clients) ? c.clients : [],
               representativeImage: {
-                title: c.representativeImage?.title || c.representativeTitle || '',
-                url: c.id === 'court' 
-                  ? `${import.meta.env.BASE_URL}court-badge.svg` 
-                  : (c.representativeImage?.url?.includes('/images/projects/') ? '' : c.representativeImage?.url || ''),
+                title: c.representativeImage?.title || '',
+                url: (c.representativeImage?.url?.includes('/images/projects/') || c.representativeImage?.url?.includes('unsplash.com')) ? '' : (c.representativeImage?.url || ''),
                 alt: c.representativeImage?.alt || ''
               },
               images: Array.isArray(c.images) 
-                ? c.images.filter((img: any) => img && img.url && !img.url.includes('/images/projects/'))
+                ? c.images.filter((img: any) => img && img.url && !img.url.includes('/images/projects/') && !img.url.includes('unsplash.com'))
                 : []
             };
           }).filter(Boolean) as PastProjectCategory[];
@@ -51,7 +49,7 @@ export default function App() {
     }
   });
 
-  // Load photos from IndexedDB on startup
+  // Load photos from IndexedDB on startup and synchronize with categories
   useEffect(() => {
     async function loadPersistedPhotos() {
       try {
@@ -62,11 +60,14 @@ export default function App() {
             for (const item of stored) {
               const cat = next.find(c => c.id === item.categoryId);
               if (cat) {
-                cat.representativeImage = {
-                  title: item.title,
-                  url: item.dataUrl,
-                  alt: item.title
-                };
+                // Ensure representative image is set if not already or updated
+                if (!cat.representativeImage || !cat.representativeImage.url) {
+                  cat.representativeImage = {
+                    title: item.title,
+                    url: item.dataUrl,
+                    alt: item.title
+                  };
+                }
                 if (!cat.images) cat.images = [];
                 const existingIdx = cat.images.findIndex(img => img.title === item.title);
                 const entry = {
@@ -92,13 +93,21 @@ export default function App() {
     loadPersistedPhotos();
   }, []);
 
+  // Company projects: purge legacy sample projects and start clean
   const [companyProjects, setCompanyProjects] = useState<CompanyProject[]>(() => {
     try {
       const saved = localStorage.getItem('soul_survey_company_projects');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+        if (Array.isArray(parsed)) {
+          // Purge legacy sample projects (soul-proj-01 ~ soul-proj-05 with unsplash images)
+          const userOnly = parsed.filter((p: any) => {
+            if (!p || typeof p !== 'object') return false;
+            const isSample = typeof p.id === 'string' && p.id.startsWith('soul-proj-0') && 
+              (p.featuredImage?.includes('unsplash.com') || p.client?.includes('다온') || p.client?.includes('제이앤비'));
+            return !isSample;
+          });
+          return userOnly;
         }
       }
       return INITIAL_COMPANY_PROJECTS;
@@ -136,13 +145,30 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Save to localStorage whenever states change
+  // Save past categories safely without throwing localStorage quota exceeded
   const handleUpdatePastCategories = (categories: PastProjectCategory[]) => {
     setPastCategories(categories);
     try {
       localStorage.setItem('soul_survey_past_categories', JSON.stringify(categories));
     } catch (e) {
-      console.error(e);
+      console.warn('LocalStorage full, saving lightweight metadata fallback:', e);
+      try {
+        // Lightweight version without huge base64 dataUrls (IndexedDB has the real photos)
+        const lightweight = categories.map(c => ({
+          ...c,
+          representativeImage: {
+            ...c.representativeImage,
+            url: c.representativeImage?.url?.startsWith('data:') ? '' : c.representativeImage?.url
+          },
+          images: (c.images || []).map(img => ({
+            ...img,
+            url: img.url?.startsWith('data:') ? '' : img.url
+          }))
+        }));
+        localStorage.setItem('soul_survey_past_categories', JSON.stringify(lightweight));
+      } catch (err2) {
+        console.error('Failed to save to localStorage:', err2);
+      }
     }
   };
 
@@ -151,7 +177,7 @@ export default function App() {
     try {
       localStorage.setItem('soul_survey_company_projects', JSON.stringify(projects));
     } catch (e) {
-      console.error(e);
+      console.error('Failed to save company projects to localStorage:', e);
     }
   };
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CompanyProject, PastProjectCategory, InquiryRecord } from '../types';
+import React, { useState, useRef } from 'react';
+import { CompanyProject, PastProjectCategory, InquiryRecord, BackupData } from '../types';
 import { 
   X, 
   Lock, 
@@ -14,10 +14,15 @@ import {
   AlertCircle,
   Upload,
   Image as ImageIcon,
-  Camera
+  Camera,
+  Download,
+  FileText,
+  CheckCircle2,
+  HardDrive
 } from 'lucide-react';
-import { savePhoto } from '../utils/photoStorage';
+import { savePhoto, getAllPhotos, bulkImportPhotos } from '../utils/photoStorage';
 import { getAdminPassword } from '../config/adminConfig';
+import { compressAndResizeImage } from '../utils/imageCompressor';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -47,14 +52,21 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [passwordInput, setPasswordInput] = useState('');
   const [passwordError, setPasswordError] = useState(false);
 
-  // Active Admin Tab: 'company' | 'past' | 'inquiries'
-  const [adminTab, setAdminTab] = useState<'company' | 'past' | 'inquiries'>('company');
+  // Active Admin Tab: 'company' | 'past' | 'inquiries' | 'backup'
+  const [adminTab, setAdminTab] = useState<'company' | 'past' | 'inquiries' | 'backup'>('company');
+
+  // Backup & Restore State
+  const [isBackingUp, setIsBackingUp] = useState(false);
+  const [isRestoring, setIsRestoring] = useState(false);
+  const [backupStatusMessage, setBackupStatusMessage] = useState<string | null>(null);
+  const [backupErrorMessage, setBackupErrorMessage] = useState<string | null>(null);
+  const backupFileInputRef = useRef<HTMLInputElement>(null);
 
   // Form state for creating/editing company project
   const [editingProject, setEditingProject] = useState<CompanyProject | null>(null);
   const [isCreatingProject, setIsCreatingProject] = useState(false);
 
-  // New project form values
+  // New project form values (completely clean slate)
   const [projectForm, setProjectForm] = useState<Partial<CompanyProject>>({
     title: '',
     category: '지형현황측량',
@@ -65,7 +77,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     scope: [''],
     equipment: ['GNSS 수신기', '토털스테이션'],
     deliverables: ['1/500 수치지형도(dwg)', '성과품 보고서'],
-    featuredImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80'
+    featuredImage: ''
   });
 
   // Category past project additions
@@ -83,6 +95,101 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       setPasswordError(false);
     } else {
       setPasswordError(true);
+    }
+  };
+
+  // -------------------------------------------------------------
+  // Data Backup (Export all data and photos to single JSON file)
+  // -------------------------------------------------------------
+  const handleDownloadBackup = async () => {
+    setIsBackingUp(true);
+    setBackupStatusMessage(null);
+    setBackupErrorMessage(null);
+    try {
+      const photos = await getAllPhotos();
+      const backupData: BackupData = {
+        appName: 'SOUL_SURVEY_BACKUP',
+        version: '1.0',
+        exportedAt: new Date().toISOString(),
+        companyProjects,
+        pastCategories,
+        photos: photos || [],
+        inquiries
+      };
+
+      const jsonString = JSON.stringify(backupData, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `soulsurvey_backup_${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      setBackupStatusMessage(
+        `백업 파일(soulsurvey_backup_${dateStr}.json) 다운로드가 완료되었습니다. (회사 실적 ${companyProjects.length}건, 과거 경력 카테고리 ${pastCategories.length}개, 현장 사진 ${photos?.length || 0}장 포함)`
+      );
+    } catch (err: any) {
+      console.error('Backup error:', err);
+      setBackupErrorMessage(`백업 다운로드 중 오류가 발생했습니다: ${err.message || err}`);
+    } finally {
+      setIsBackingUp(false);
+    }
+  };
+
+  // -------------------------------------------------------------
+  // Data Restore (Import from JSON file and restore IndexedDB + state)
+  // -------------------------------------------------------------
+  const handleRestoreFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsRestoring(true);
+    setBackupStatusMessage(null);
+    setBackupErrorMessage(null);
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as BackupData;
+
+      if (!parsed || (!parsed.pastCategories && !parsed.companyProjects && !parsed.photos)) {
+        throw new Error('올바른 소울측량 백업 JSON 형식이 아닙니다. 백업된 파일인지 확인해주세요.');
+      }
+
+      // 1. Bulk import photos into IndexedDB
+      if (Array.isArray(parsed.photos) && parsed.photos.length > 0) {
+        await bulkImportPhotos(parsed.photos);
+      }
+
+      // 2. Restore past categories
+      if (Array.isArray(parsed.pastCategories) && parsed.pastCategories.length > 0) {
+        onUpdatePastCategories(parsed.pastCategories);
+      }
+
+      // 3. Restore company projects
+      if (Array.isArray(parsed.companyProjects)) {
+        onUpdateCompanyProjects(parsed.companyProjects);
+      }
+
+      // 4. Restore inquiries
+      if (Array.isArray(parsed.inquiries)) {
+        onUpdateInquiries(parsed.inquiries);
+      }
+
+      setBackupStatusMessage(
+        `데이터가 성공적으로 복원되었습니다! (회사 실적 ${parsed.companyProjects?.length || 0}건, 과거 경력 ${parsed.pastCategories?.length || 0}개 분야, 사진 ${parsed.photos?.length || 0}장)`
+      );
+    } catch (err: any) {
+      console.error('Restore error:', err);
+      setBackupErrorMessage(`데이터 복원 실패: ${err.message || '파일을 읽을 수 없습니다.'}`);
+    } finally {
+      setIsRestoring(false);
+      if (backupFileInputRef.current) {
+        backupFileInputRef.current.value = '';
+      }
     }
   };
 
@@ -111,7 +218,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         scope: projectForm.scope?.filter(s => s.trim().length > 0) || ['현장 기준점 및 지형측량'],
         equipment: projectForm.equipment || ['토털스테이션'],
         deliverables: projectForm.deliverables || ['CAD 도면'],
-        featuredImage: projectForm.featuredImage || 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80'
+        featuredImage: projectForm.featuredImage || ''
       };
       onUpdateCompanyProjects([newProj, ...companyProjects]);
       setIsCreatingProject(false);
@@ -128,7 +235,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       scope: [''],
       equipment: ['GNSS 수신기'],
       deliverables: ['CAD 도면'],
-      featuredImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80'
+      featuredImage: ''
     });
   };
 
@@ -144,17 +251,16 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     setIsCreatingProject(true);
   };
 
-  // Image Upload handler to DataURL
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Image Upload handler with auto compression (max 1200px, JPEG 0.8)
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          setProjectForm(prev => ({ ...prev, featuredImage: reader.result as string }));
-        }
-      };
-      reader.readAsDataURL(file);
+      try {
+        const compressed = await compressAndResizeImage(file, 1200, 1200, 0.8);
+        setProjectForm(prev => ({ ...prev, featuredImage: compressed }));
+      } catch (err) {
+        console.error('Image compression failed:', err);
+      }
     }
   };
 
@@ -198,13 +304,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     onUpdatePastCategories(updatedCategories);
   };
 
-  // Upload Photo for Category
+  // Upload Photo for Category (compressed to max 1200px, JPEG 0.8)
   const handleCategoryPhotoUpload = async (catId: string, files: FileList | null) => {
     if (!files || files.length === 0) return;
     const file = files[0];
-    const reader = new FileReader();
-    reader.onload = async () => {
-      const dataUrl = reader.result as string;
+    try {
+      const dataUrl = await compressAndResizeImage(file, 1200, 1200, 0.8);
       const cleanTitle = file.name.replace(/\.[^/.]+$/, '');
       await savePhoto({
         id: `photo_${catId}_${Date.now()}`,
@@ -237,8 +342,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         return c;
       });
       onUpdatePastCategories(updated);
-    };
-    reader.readAsDataURL(file);
+    } catch (err) {
+      console.error('Failed to upload category photo:', err);
+    }
   };
 
   // Inquiry Status Change
@@ -358,6 +464,18 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   <Inbox className="w-3.5 h-3.5" />
                   <span>온라인 견적 문의 ({inquiries.length})</span>
                 </button>
+
+                <button
+                  onClick={() => setAdminTab('backup')}
+                  className={`px-4 py-2.5 text-xs font-bold rounded-t-lg transition-colors border-b-2 flex items-center gap-1.5 ${
+                    adminTab === 'backup'
+                      ? 'border-emerald-700 text-emerald-900 bg-white shadow-2xs'
+                      : 'border-transparent text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <HardDrive className="w-3.5 h-3.5" />
+                  <span>실적/사진 백업 및 복원</span>
+                </button>
               </div>
 
               <button
@@ -401,7 +519,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               scope: [''],
                               equipment: ['GNSS 수신기', '토털스테이션'],
                               deliverables: ['1/500 수치지형도(dwg)'],
-                              featuredImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80'
+                              featuredImage: ''
                             });
                             setIsCreatingProject(true);
                           }}
@@ -412,19 +530,32 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         </button>
                       </div>
 
-                      <div className="space-y-3">
-                        {companyProjects.map((p) => (
-                          <div
-                            key={p.id}
-                            className="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-slate-300 transition-all bg-slate-50/50"
-                          >
-                            <div className="flex items-center gap-3">
-                              <img
-                                src={p.featuredImage}
-                                alt={p.title}
-                                referrerPolicy="no-referrer"
-                                className="w-16 h-12 rounded object-cover flex-shrink-0 bg-slate-200"
-                              />
+                      {companyProjects.length === 0 ? (
+                        <div className="text-center py-12 px-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                          <Building2 className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                          <p className="text-sm font-bold text-slate-700">현재 등록된 회사 수행실적이 없습니다.</p>
+                          <p className="text-xs text-slate-400 mt-1 mb-4">우측 상단의 '+ 신규 실적 등록' 버튼을 눌러 첫 실적을 등록해보세요.</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          {companyProjects.map((p) => (
+                            <div
+                              key={p.id}
+                              className="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-slate-300 transition-all bg-slate-50/50"
+                            >
+                              <div className="flex items-center gap-3">
+                                {p.featuredImage ? (
+                                  <img
+                                    src={p.featuredImage}
+                                    alt={p.title}
+                                    referrerPolicy="no-referrer"
+                                    className="w-16 h-12 rounded object-cover flex-shrink-0 bg-slate-200"
+                                  />
+                                ) : (
+                                  <div className="w-16 h-12 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 flex-shrink-0">
+                                    <ImageIcon className="w-5 h-5 text-slate-400" />
+                                  </div>
+                                )}
                               <div>
                                 <div className="flex items-center gap-2">
                                   <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">
@@ -460,8 +591,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           </div>
                         ))}
                       </div>
-                    </div>
-                  ) : (
+                    )}
+                  </div>
+                ) : (
                     /* Project Create / Edit Form */
                     <div>
                       <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
@@ -823,6 +955,139 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       ))}
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* ============================================================== */}
+              {/* TAB 4: 실적/사진 백업 및 복원 (JSON) */}
+              {/* ============================================================== */}
+              {adminTab === 'backup' && (
+                <div className="space-y-6">
+                  {/* Status Banner */}
+                  {backupStatusMessage && (
+                    <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-sm font-bold text-emerald-900">작업 성공</p>
+                        <p className="text-xs text-emerald-800 mt-0.5 leading-relaxed">{backupStatusMessage}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {backupErrorMessage && (
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-700 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-sm font-bold text-red-900">오류 발생</p>
+                        <p className="text-xs text-red-700 mt-0.5 leading-relaxed">{backupErrorMessage}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Hidden File Input for JSON Restore */}
+                  <input
+                    type="file"
+                    ref={backupFileInputRef}
+                    onChange={handleRestoreFileSelected}
+                    accept=".json,application/json"
+                    className="hidden"
+                  />
+
+                  {/* Section 1: Backup (Download JSON) */}
+                  <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70">
+                    <div className="flex items-start justify-between gap-4 flex-wrap sm:flex-nowrap">
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
+                          <Download className="w-3.5 h-3.5" />
+                          <span>데이터 내보내기</span>
+                        </div>
+                        <h4 className="text-base font-bold text-slate-900">
+                          실적 데이터 백업 (JSON 다운로드)
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1.5 leading-relaxed max-w-xl">
+                          회사 수행실적, 대표자 과거 참여경력, 업로드한 모든 현장 사진(Base64 인코딩)과 온라인 견적 상담 내역을 <strong>단 하나의 JSON 백업 파일</strong>로 안전하게 저장합니다.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={handleDownloadBackup}
+                        disabled={isBackingUp}
+                        className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-900 disabled:bg-slate-400 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors flex-shrink-0 cursor-pointer"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>{isBackingUp ? '백업 생성 중...' : '실적 데이터 백업(다운로드)'}</span>
+                      </button>
+                    </div>
+
+                    <div className="mt-4 pt-4 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      <div className="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                        <span className="text-[11px] text-slate-500 block">회사 신규 실적</span>
+                        <strong className="text-base text-slate-900 font-mono">{companyProjects.length}건</strong>
+                      </div>
+                      <div className="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                        <span className="text-[11px] text-slate-500 block">대표자 경력 분야</span>
+                        <strong className="text-base text-slate-900 font-mono">{pastCategories.length}개</strong>
+                      </div>
+                      <div className="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                        <span className="text-[11px] text-slate-500 block">온라인 견적 문의</span>
+                        <strong className="text-base text-slate-900 font-mono">{inquiries.length}건</strong>
+                      </div>
+                      <div className="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                        <span className="text-[11px] text-slate-500 block">사진 포함 여부</span>
+                        <strong className="text-base text-emerald-800 font-bold">100% 동봉</strong>
+                      </div>
+                    </div>
+
+                    <p className="text-[11px] text-slate-500 mt-3 flex items-center gap-1.5">
+                      <span className="text-emerald-700 font-bold">안내:</span>
+                      웹사이트를 새로 배포하거나 다른 컴퓨터에서 열더라도, 이 백업 파일 하나만 있으면 언제든지 사진과 실적이 원래대로 복구됩니다.
+                    </p>
+                  </div>
+
+                  {/* Section 2: Restore (Upload JSON) */}
+                  <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-white shadow-2xs">
+                    <div className="flex items-start justify-between gap-4 flex-wrap sm:flex-nowrap">
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-bold mb-2">
+                          <Upload className="w-3.5 h-3.5" />
+                          <span>데이터 불러오기</span>
+                        </div>
+                        <h4 className="text-base font-bold text-slate-900">
+                          실적 데이터 불러오기 (파일 업로드)
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1.5 leading-relaxed max-w-xl">
+                          이전에 다운로드해둔 <strong>JSON 백업 파일</strong>을 선택하면, 등록했던 실적과 사진들을 원래대로 즉시 복원합니다.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => backupFileInputRef.current?.click()}
+                        disabled={isRestoring}
+                        className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors flex-shrink-0 cursor-pointer"
+                      >
+                        <Upload className="w-4 h-4" />
+                        <span>{isRestoring ? '데이터 복원 중...' : '실적 데이터 불러오기(파일 업로드)'}</span>
+                      </button>
+                    </div>
+
+                    <div className="mt-4 p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-2.5 text-xs text-amber-900">
+                      <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold">주의:</span> 데이터를 불러오면 백업 파일 내의 실적과 사진으로 기존 화면 데이터가 갱신됩니다. 가장 최근에 백업한 최신 JSON 파일을 선택해주세요.
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Section 3: Automatic Image Compression Info */}
+                  <div className="p-5 rounded-xl border border-slate-200 bg-emerald-50/40">
+                    <h5 className="font-bold text-slate-900 text-xs sm:text-sm mb-1.5 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+                      <span>사진 용량 자동 최적화 시스템 적용</span>
+                    </h5>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      스마트폰이나 고해상도 카메라로 촬영한 대용량 원본 사진(10~20MB)도 업로드 시 브라우저 내에서 <strong>최대 가로/세로 1200px 이하, JPEG 품질 0.8</strong>로 자동 리사이징 및 압축되어 저장됩니다. 웹사이트 로딩 속도가 빠르며 백업 파일의 용량도 수 MB 수준으로 매우 가볍게 유지됩니다.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

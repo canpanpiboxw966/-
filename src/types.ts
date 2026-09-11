@@ -77,3 +77,20 @@ export interface InquiryRecord {
   createdAt: string;
   status: 'pending' | 'contacted' | 'completed';
 }
+
+export interface BackupData {
+  appName: string;
+  version: string;
+  exportedAt: string;
+  companyProjects: CompanyProject[];
+  pastCategories: PastProjectCategory[];
+  photos: {
+    id: string;
+    categoryId: string;
+    title: string;
+    dataUrl: string;
+    filename: string;
+    uploadedAt: number;
+  }[];
+  inquiries?: InquiryRecord[];
+}

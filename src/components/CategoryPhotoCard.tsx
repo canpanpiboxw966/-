@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ZoomIn, 
   Camera, 
@@ -73,6 +73,11 @@ export const CategoryPhotoCard: React.FC<CategoryPhotoCardProps> = ({
 }) => {
   const [imgError, setImgError] = useState(false);
   const theme = CATEGORY_THEME[categoryId] || CATEGORY_THEME.institutional;
+
+  // Reset imgError whenever imageUrl changes
+  useEffect(() => {
+    setImgError(false);
+  }, [imageUrl]);
 
   // Determine if valid image is present and has not errored
   const hasValidImage = Boolean(imageUrl && imageUrl.trim() !== '' && !imgError);
