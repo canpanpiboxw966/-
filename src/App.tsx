@@ -223,7 +223,7 @@ export default function App() {
       {/* 8. Footer */}
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
-      {/* Admin Management Modal (Password: 1111) */}
+      {/* Admin Management Modal */}
       <AdminModal
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}

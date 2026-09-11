@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
             id="header-admin-btn"
             onClick={onOpenAdmin}
             className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
-            title="관리자 모드 (비밀번호: 1111)"
+            title="관리자 모드"
             aria-label="관리자 로그인"
           >
             <Lock className="w-4 h-4" />

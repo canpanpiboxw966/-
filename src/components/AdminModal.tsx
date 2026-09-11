@@ -17,6 +17,7 @@ import {
   Camera
 } from 'lucide-react';
 import { savePhoto } from '../utils/photoStorage';
+import { getAdminPassword } from '../config/adminConfig';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -77,7 +78,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === '1111') {
+    if (passwordInput === getAdminPassword()) {
       setIsAuthenticated(true);
       setPasswordError(false);
     } else {
@@ -297,14 +298,14 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 autoFocus
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="비밀번호 4자리 (1111)"
+                placeholder="비밀번호를 입력하세요"
                 className="w-full px-4 py-3 text-center tracking-widest text-lg font-mono bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700"
               />
 
               {passwordError && (
                 <div className="text-xs text-red-600 flex items-center justify-center gap-1">
                   <AlertCircle className="w-3.5 h-3.5" />
-                  <span>비밀번호가 올바르지 않습니다. (안내: 1111)</span>
+                  <span>비밀번호가 올바르지 않습니다.</span>
                 </div>
               )}
 

@@ -27,6 +27,7 @@ import {
   deletePhotosByCategoryId 
 } from '../utils/photoStorage';
 import { PastProjectCategory } from '../types';
+import { getAdminPassword } from '../config/adminConfig';
 
 interface PhotoUploaderModalProps {
   isOpen: boolean;
@@ -89,7 +90,7 @@ export const PhotoUploaderModal: React.FC<PhotoUploaderModalProps> = ({
   // Handle Admin Password Verification
   const handleAuthSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === '1111') {
+    if (passwordInput === getAdminPassword()) {
       onAdminLogin();
       setPasswordError(false);
       setPasswordInput('');
@@ -123,14 +124,14 @@ export const PhotoUploaderModal: React.FC<PhotoUploaderModalProps> = ({
               required
               value={passwordInput}
               onChange={(e) => setPasswordInput(e.target.value)}
-              placeholder="관리자 비밀번호 (1111)"
+              placeholder="관리자 비밀번호를 입력하세요"
               className="w-full px-4 py-3 text-center tracking-widest text-lg font-mono bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700"
             />
 
             {passwordError && (
               <div className="text-xs text-rose-600 flex items-center justify-center gap-1 font-medium">
                 <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>비밀번호가 올바르지 않습니다. (1111)</span>
+                <span>비밀번호가 올바르지 않습니다.</span>
               </div>
             )}
 

@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             <button
               onClick={onOpenAdmin}
               className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
-              title="관리자 모드 (비밀번호: 1111)"
+              title="관리자 모드"
             >
               <Lock className="w-3 h-3" />
               <span>관리자</span>
