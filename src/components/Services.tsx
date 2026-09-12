@@ -20,11 +20,11 @@ export const Services: React.FC = () => {
         {/* ============================================================== */}
         <div className="mb-20">
           <div className="max-w-3xl mb-12">
-            <div className="text-xs font-bold tracking-wider text-emerald-800 uppercase mb-2">
-              SURVEYING FIELDS
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold mb-2.5">
+              <span>SURVEYING FIELDS · 3D 측량 기술 솔루션</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              측량 분야
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+              일반측량 핵심 기술 및 적용 분야
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
               설계부터 시공, 준공, 유지관리까지 건설 및 개발 프로젝트의 전 과정에 필요한 정밀 측량 업무를 수행합니다.
@@ -63,7 +63,7 @@ export const Services: React.FC = () => {
               <div className="pt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-7">
                   <p className="text-sm text-slate-700 leading-relaxed">
-                    기준점측량, 수준측량, 지형현황측량, 종·횡단측량, 용지경계측량 및 지장물조사 등을 통해 
+                    기준점측량, 수준측량, 지형현황측량, 종·횡단측량, 사업부지 현황측량 및 지장물조사 등을 통해 
                     설계에 필요한 지형도, 종·횡단면도, 지장물도 등의 기초자료를 작성합니다.
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export const Services: React.FC = () => {
                       '수준측량',
                       '지형현황측량',
                       '종·횡단측량',
-                      '용지경계측량',
+                      '사업부지 현황측량',
                       '지장물조사',
                       '설계용 측량성과 작성'
                     ].map((item, idx) => (
@@ -153,7 +153,7 @@ export const Services: React.FC = () => {
                           '중심선측량',
                           '종·횡단측량',
                           '토공량 산출',
-                          '용지경계 확인',
+                          '사업부지 현황 확인',
                           '지장물조사'
                         ].map((item, i) => (
                           <span key={i} className="px-2 py-0.5 bg-white border border-slate-200 rounded text-[11px] text-slate-800">

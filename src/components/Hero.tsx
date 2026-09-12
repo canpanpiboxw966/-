@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
 
       <div className="absolute bottom-12 right-12 text-[11px] font-mono text-slate-400 hidden xl:flex flex-col text-right gap-0.5 pointer-events-none select-none">
         <span>SYS: GRS80 TM-CENTRAL</span>
-        <span>VRS-RTK 3D ACCURACY: ±1.2cm</span>
+        <span>VRS-RTK GNSS NETWORK LINKED</span>
         <span className="text-slate-500">SOUL SURVEY CO., LTD.</span>
       </div>
 
@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
             {/* Slogan Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold mb-5 sm:mb-6 shadow-2xs">
               <Box className="w-3.5 h-3.5 text-emerald-700" />
-              <span>3D 정밀 디오라마 감성 · 작지만 가장 가까운 측량 파트너</span>
+              <span>3D 정밀 디오라마 감성 · 20년 현장 경력의 든든한 측량 파트너</span>
             </div>
 
             {/* Main Headline */}
@@ -40,7 +40,7 @@ export const Hero: React.FC = () => {
 
             {/* Subtext */}
             <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl font-normal">
-              복잡하고 어려운 토목 측량이 아닙니다. 정교한 3D 미니어처 블록을 맞추듯, 
+              복잡하고 어려운 토목 측량이 아닙니다. 정교한 3D 디오라마 모델을 다루듯, 
               현장의 조건과 필요한 성과물을 대표자가 직접 살펴보고 가장 명쾌한 해결책을 찾아드립니다.
             </p>
 
@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
                 href="#portfolio"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 active:bg-slate-100 rounded-xl shadow-2xs transition-colors min-h-[48px]"
               >
-                <span>주요 실적 및 경력 보기</span>
+                <span>회사 실적 및 참여경력 보기</span>
                 <ChevronDown className="w-4 h-4 text-slate-400" />
               </a>
 
@@ -126,15 +126,15 @@ export const Hero: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100 mb-4">
                 <img 
                   src={heroMiniatureImg} 
-                  alt="소울측량 3D 미니어처 현장" 
+                  alt="소울측량 3D 디오라마 현장 모델" 
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.03]"
                 />
 
-                {/* Floating Top Coordinate Pill */}
+                {/* Floating Top Pill */}
                 <div className="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-md text-white px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                  <span>ACCURACY: ±0.005m</span>
+                  <span>PRECISE SURVEY MODEL</span>
                 </div>
 
                 {/* Bottom Logo Overlay */}
@@ -160,7 +160,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between py-1 border-t border-slate-50">
                   <span className="text-slate-400 font-medium">적용 분야</span>
-                  <span className="font-bold text-slate-800">대지경계 · 현황 · 인허가 · 공사</span>
+                  <span className="font-bold text-slate-800">지형현황 · 인허가 · 토목공사 · 기준점</span>
                 </div>
               </div>
 
@@ -168,7 +168,7 @@ export const Hero: React.FC = () => {
               <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 font-medium px-1">
                 <span className="flex items-center gap-1 text-emerald-800 font-bold">
                   <Sparkles className="w-3 h-3 text-emerald-600" />
-                  <span>현장 맞춤형 신속 견적</span>
+                  <span>현장 맞춤형 신속 상담</span>
                 </span>
                 <span className="font-mono text-[10px] text-slate-400">EST. 2004</span>
               </div>

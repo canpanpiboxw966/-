@@ -40,12 +40,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   onAdminLogout,
   onOpenAdmin
 }) => {
-  // Active Tab: 'experience' (대표자 참여 경력) vs 'company' (회사 수행실적)
-  const [activeTab, setActiveTab] = useState<'experience' | 'company'>('experience');
+  // Active Tab: 'company' (회사 수행실적) vs 'experience' (대표자 참여 경력) - 회사 실적이 먼저 노출
+  const [activeTab, setActiveTab] = useState<'experience' | 'company'>('company');
   
-  // Accordion state: set of open category IDs
+  // Accordion state: set of open category IDs (모두 처음에 접힌 상태로 기본 설정)
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
-    'redevelopment': true, // First one open by default
+    'redevelopment': false, // 초기 접힘 상태
     'apartments': false,
     'defense': false,
     'cadastral': false,
@@ -109,20 +109,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({
             </p>
           </div>
 
-          {/* Primary View Switcher Tabs (Responsive: Full width & 44px touch targets on mobile, compact on PC) */}
+          {/* Primary View Switcher Tabs (회사 수행실적이 먼저 노출) */}
           <div className="w-full md:w-auto flex p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
-            <button
-              id="tab-experience-btn"
-              onClick={() => setActiveTab('experience')}
-              className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
-                activeTab === 'experience'
-                  ? 'bg-white text-emerald-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Briefcase className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-              <span>대표자 참여 경력</span>
-            </button>
             <button
               id="tab-company-btn"
               onClick={() => setActiveTab('company')}
@@ -135,6 +123,18 @@ export const Portfolio: React.FC<PortfolioProps> = ({
               <Building2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
               <span>회사 수행실적</span>
               <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
+            </button>
+            <button
+              id="tab-experience-btn"
+              onClick={() => setActiveTab('experience')}
+              className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
+                activeTab === 'experience'
+                  ? 'bg-white text-emerald-900 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Briefcase className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+              <span>대표자 참여 경력</span>
             </button>
           </div>
         </div>
@@ -507,7 +507,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto mb-6">
                   과장된 샘플이 아닌, 소울측량이 직접 수행한 검증된 최신 현장만을 투명하게 등록해 나갈 예정입니다. 
-                  대표자의 16년+ 정밀 측량 경력은 상단의 <strong>[대표자 참여경력 (7개 분야)]</strong> 탭에서 언제든지 상세히 확인하실 수 있습니다.
+                  대표자의 20년+ 정밀 측량 경력은 상단의 <strong>[대표자 참여경력 (7개 분야)]</strong> 탭에서 언제든지 상세히 확인하실 수 있습니다.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   <button

@@ -240,7 +240,7 @@ export const INITIAL_PAST_CATEGORIES: PastProjectCategory[] = [
   {
     id: 'court',
     categoryName: '법원감정측량',
-    representativeTitle: '법원에 등록된 측량감정인(재판조력자)으로 경계, 소유권, 목적물 현황등 재판관련 측량업무 수행',
+    representativeTitle: '법원에 등록된 측량감정인(재판조력자)으로 현황, 소유물, 목적물 현황 등 사법 재판관련 측량업무 수행',
     primaryClient: '대한민국 법원',
     representativeImage: {
       title: '대한민국 법원 감정측량',
@@ -248,7 +248,7 @@ export const INITIAL_PAST_CATEGORIES: PastProjectCategory[] = [
       alt: '대한민국 법원 감정측량'
     },
     images: [],
-    description: '법원에 등록된 측량감정인(재판조력자)으로 토지 경계 분쟁, 소유권 확인, 목적물 현황 등 사법 재판관련 전문 측량 감정업무를 수행합니다.',
+    description: '법원에 등록된 측량감정인(재판조력자)으로 토지 형상 및 점유 현황, 목적물 현황 등 사법 재판관련 전문 측량 감정업무를 수행합니다.',
     clients: [
       '서울중앙지방법원',
       '서울동부지방법원',
@@ -268,7 +268,7 @@ export const INITIAL_PAST_CATEGORIES: PastProjectCategory[] = [
       '춘천지방법원'
     ],
     projects: [
-      { name: '법원에 등록된 측량감정인(재판조력자)으로 경계, 소유권, 목적물 현황등 재판관련 측량업무 수행', client: '대한민국 각급 법원', note: '경계, 소유권, 목적물 현황' }
+      { name: '법원에 등록된 측량감정인(재판조력자)으로 현황, 소유물, 목적물 현황 등 재판관련 측량업무 수행', client: '대한민국 각급 법원', note: '현황 및 목적물 실측 감정' }
     ]
   }
 ];
@@ -282,7 +282,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     title: '설계측량',
     englishTitle: 'Design Survey',
     tag: '토목·건축 설계의 첫걸음',
-    summary: '도로, 단지, 택지, 건축물 신축 등 모든 설계의 뼈대가 되는 현장의 3차원 지형 데이터와 경계를 빈틈없이 취득하여 설계 오차를 원천 차단합니다.',
+    summary: '도로, 단지, 택지, 건축물 신축 등 모든 설계의 뼈대가 되는 현장의 3차원 지형 데이터와 시설물 현황을 빈틈없이 취득하여 설계 착오를 사전에 방지합니다.',
     targetCases: [
       '건축 인허가 및 개발행위허가 사전 도면 작성',
       '도로, 배수로, 교량 신설을 위한 계획선형 검토',
@@ -303,7 +303,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     title: '공사측량',
     englishTitle: 'Construction Survey',
     tag: '시공 오차를 잡는 현장 검측',
-    summary: '터파기부터 골조 완성까지, 설계도면상의 좌표와 높이를 실제 현장 지표면에 한 치의 오차 없이 구현하고 공정별 시공 정밀도를 검증합니다.',
+    summary: '터파기부터 골조 완성까지, 설계도면상의 좌표와 높이를 실제 현장 지표면에 정확하게 구현하고 공정별 시공 상태를 엄격히 검증합니다.',
     targetCases: [
       '건축물 착공 전 정확한 건축선 및 이격거리 확인',
       '토공사 터파기 깊이 검측 및 토량(절토/성토) 반출량 정산',
@@ -324,10 +324,10 @@ export const SERVICES_DATA: ServiceDetail[] = [
     title: '지형현황측량',
     englishTitle: 'Topographic Survey',
     tag: '현장의 모든 것을 도면화',
-    summary: '토지의 고저 기복, 경계, 지장물, 지하 매설관로의 인벌트 레벨까지 현장의 실제 상황을 그대로 컴퓨터 도면으로 옮겨 담아 법적 인허가를 지원합니다.',
+    summary: '토지의 고저 기복, 시설물 현황, 지장물, 지하 매설관로의 인벌트 레벨까지 현장의 실제 상황을 그대로 컴퓨터 도면으로 옮겨 담아 법적 인허가를 지원합니다.',
     targetCases: [
       '개발행위허가, 산지전용허가, 농지전용허가 제출용 도면',
-      '오래된 토지의 실제 경계와 점유 현황 파악',
+      '현장의 실제 지형 상태 및 점유 현황 파악',
       '공장, 창고, 물류센터 증축 전 부지 가용 면적 조사',
       '인접 필지와의 레벨 차이로 인한 축대·옹벽 설치 검토'
     ],

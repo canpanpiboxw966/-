@@ -20,42 +20,42 @@ export const About: React.FC = () => {
   const pins = [
     {
       id: 0,
-      title: '경계 복원 & 건축선 핀',
-      desc: '대지 경계와 건축 한계선을 1mm 단위로 정확하게 짚어 이웃 간 분쟁을 미연에 방지합니다.',
-      tag: '정밀도 ±5mm'
+      title: '현황측량 & 대지 형상 핀',
+      desc: '설계 및 인허가에 필요한 대지 현황과 건축 배치 기준선을 현장 조건에 맞춰 정확하게 관측합니다.',
+      tag: '현장 맞춤 검측'
     },
     {
       id: 1,
       title: 'GNSS 위성 기준점',
-      desc: '국토지리정보원 국가기준점과 실시간 연동하여 절대 오차 없는 세계측지계 좌표를 고정합니다.',
+      desc: '국토지리정보원 국가기준점과 실시간 연동하여 신뢰할 수 있는 세계측지계 좌표를 고정합니다.',
       tag: '국가기준점 폐합'
     },
     {
       id: 2,
       title: '등고선 & 수치지형 블록',
       desc: '현장의 고저차와 배수 경사를 3D 단면으로 추출하여 설계자가 바로 쓸 수 있는 CAD로 완성합니다.',
-      tag: '1/500 DWG 완성'
+      tag: 'CAD DWG 완성'
     }
   ];
 
   const miniaturePillars = [
     {
       icon: Crosshair,
-      title: '오차 없는 1mm 정밀도',
+      title: '철저한 현장 오차 관리',
       subtitle: '타협 없는 성과 검측',
-      desc: '기준점 하나의 오차가 큰 하자로 번지지 않도록, 20년간 지켜온 철저한 폐합 오차 검증 원칙을 고수합니다.'
+      desc: '기계적·환경적 요인까지 다각도로 분석하여, 20년간 지켜온 엄격한 폐합 검증과 성과 관리 원칙을 고수합니다.'
     },
     {
       icon: Cpu,
       title: '대표자 직수행 & 직검측',
       subtitle: '초보기사 외주 배제',
-      desc: '대형사의 현장 전달 누락 대신, 20년 경력 대표자가 직접 장비를 챙겨 현장 관측과 도면 검토를 마칩니다.'
+      desc: '현장 전달 누락 대신, 20년 경력 대표자가 직접 장비를 챙겨 현장 관측과 도면 검토를 책임집니다.'
     },
     {
       icon: Radio,
-      title: '신속하고 가벼운 소통',
+      title: '신속하고 긴밀한 소통',
       subtitle: '설계사무소·현장 직통',
-      desc: '무거운 절차와 결재 라인 없이, 전화 한 통으로 현장 상황을 즉시 파악하고 맞춤형 솔루션을 제안합니다.'
+      desc: '불필요한 절차 없이, 전화 한 통으로 현장 상황을 즉시 파악하고 최적의 솔루션을 제안합니다.'
     },
     {
       icon: ShieldCheck,
@@ -79,23 +79,23 @@ export const About: React.FC = () => {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold mb-3.5 shadow-2xs">
               <Box className="w-3.5 h-3.5 text-emerald-700" />
-              <span>ABOUT SOUL SURVEY · 정밀 3D 미니어처 감성</span>
+              <span>ABOUT SOUL SURVEY · 정밀 3D 디오라마 감성</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              정교한 측량 현장을 한눈에, <br className="hidden sm:inline" />
-              <span className="text-emerald-800">작지만 정밀한 디오라마</span>처럼 보여드립니다.
+              복잡한 측량 현장을 한눈에, <br className="hidden sm:inline" />
+              <span className="text-emerald-800">정밀한 3D 디오라마</span>처럼 명쾌하게 보여드립니다.
             </h2>
             <p className="mt-3.5 text-slate-600 text-sm sm:text-base leading-relaxed">
-              측량은 차갑고 어려운 토목 기술이 아닙니다. 땅 위의 모든 경계와 높낮이를 
-              정교한 미니어처 블록을 맞추듯 한 치의 오차 없이 명쾌하고 따뜻하게 정리해 드립니다.
+              측량은 차갑고 어려운 토목 기술이 아닙니다. 땅 위의 현황과 높낮이를 
+              정교한 미니어처 블록을 맞추듯 설계와 시공에 착오가 없도록 명쾌하고 꼼꼼하게 정리해 드립니다.
             </p>
           </div>
 
           {/* Isometric Micro Status Badges (Responsive: 3 cols on mobile/PC) */}
           <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full lg:w-auto">
             <div className="px-3 py-2.5 rounded-xl bg-white border border-slate-200 shadow-2xs text-center">
-              <span className="text-[10px] text-slate-400 block font-bold uppercase">Accuracy</span>
-              <span className="text-xs sm:text-sm font-mono font-extrabold text-slate-900">±0.005m</span>
+              <span className="text-[10px] text-slate-400 block font-bold uppercase">Quality</span>
+              <span className="text-xs sm:text-sm font-mono font-extrabold text-slate-900">정밀 검측</span>
             </div>
             <div className="px-3 py-2.5 rounded-xl bg-white border border-slate-200 shadow-2xs text-center">
               <span className="text-[10px] text-slate-400 block font-bold uppercase">Experience</span>
@@ -115,7 +115,7 @@ export const About: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-100">
               <img 
                 src={miniatureImg} 
-                alt="소울측량 3D 미니어처 디오라마" 
+                alt="소울측량 3D 디오라마" 
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
               />
@@ -134,7 +134,7 @@ export const About: React.FC = () => {
                   <span className="text-emerald-800 font-bold">H: +42.15m</span>
                 </div>
                 <span className="text-[10px] sm:text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
-                  폐합오차 허용치 이내
+                  국가기준점 연동 검측
                 </span>
               </div>
             </div>
@@ -148,12 +148,12 @@ export const About: React.FC = () => {
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
-              복잡한 대지 경계도, <br />
-              깔끔한 미니어처처럼 명확해집니다
+              복잡한 현장 지형도, <br />
+              깔끔한 디오라마처럼 명확해집니다
             </h3>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              전원주택 단독필지부터 대규모 개발단지까지, 대표자가 직접 최신 GNSS 수신기와 광파기로 관측하여 눈에 보이지 않던 토지의 법적 경계선과 높낮이를 눈앞에 또렷이 구현합니다.
+              설계 및 공사 현장부터 대규모 개발단지까지, 대표자가 직접 최신 GNSS 수신기와 광파기로 관측하여 설계와 시공의 기준이 되는 현장 지형과 높낮이를 눈앞에 또렷이 구현합니다.
             </p>
 
             {/* Interactive Pin List (1-col on mobile, highly touch-friendly) */}
@@ -194,10 +194,10 @@ export const About: React.FC = () => {
         <div>
           <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
             <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-              소울측량이 약속하는 4대 입체 원칙
+              소울측량이 약속하는 4대 원칙
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
-              크기보다 중요한 것은 현장과의 호흡이며, 20년의 경험이 담긴 정직한 약속입니다.
+              무엇보다 중요한 것은 현장과의 긴밀한 호흡이며, 20년의 경험이 담긴 정직한 약속입니다.
             </p>
           </div>
 
@@ -247,7 +247,7 @@ export const About: React.FC = () => {
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 잠실 롯데월드타워 초고층 공사, 수도권 대규모 재개발·재건축, 국방부 핵심 군사기지 등에서 
-                20년간 지켜온 엄격한 기준점 검측 원칙으로 작은 필지 하나도 안전하고 완벽하게 측량합니다.
+                20년간 지켜온 엄격한 기준점 검측 원칙으로 어떠한 현장도 안전하고 정확하게 측량합니다.
               </p>
             </div>
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
@@ -262,7 +262,7 @@ export const About: React.FC = () => {
                 href="#portfolio"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700/80 rounded-xl transition-all border border-slate-700"
               >
-                <span>대표자 7개 분야 참여경력 보기</span>
+                <span>회사 실적 및 대표자 참여경력 보기</span>
               </a>
             </div>
           </div>

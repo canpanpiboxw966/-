@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
           <div className="lg:col-span-5 space-y-4">
             <SoulSurveyLogo variant="full" theme="dark" size="md" />
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm pt-2">
-              작지만 가까운 측량 파트너 · 정확한 현장 대응 · 20년+ 현장 경험. <br />
+              20년+ 현장 경험의 신뢰할 수 있는 측량 파트너 · 정확한 현장 대응. <br />
               현장의 조건과 필요한 성과물을 먼저 살펴보고 적합한 측량방법을 함께 검토합니다.
             </p>
 

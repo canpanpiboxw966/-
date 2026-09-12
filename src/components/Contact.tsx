@@ -116,10 +116,10 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="text-xs font-bold tracking-wider text-emerald-800 uppercase mb-2">
-            CONTACT & INQUIRY
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold mb-2.5">
+            <span>CONTACT & INQUIRY · 대표자 1:1 직통 상담</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             측량 견적 및 현장 상담 문의
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
