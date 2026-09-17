@@ -29,6 +29,8 @@ interface PortfolioProps {
   onAdminLogin?: () => void;
   onAdminLogout?: () => void;
   onOpenAdmin?: () => void;
+  activeTabProp?: 'experience' | 'company';
+  onTabChange?: (tab: 'experience' | 'company') => void;
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ 
@@ -38,10 +40,18 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   isAdminAuthenticated = false,
   onAdminLogin = () => {},
   onAdminLogout,
-  onOpenAdmin
+  onOpenAdmin,
+  activeTabProp,
+  onTabChange
 }) => {
   // Active Tab: 'company' (회사 수행실적) vs 'experience' (대표자 참여 경력) - 회사 실적이 먼저 노출
-  const [activeTab, setActiveTab] = useState<'experience' | 'company'>('company');
+  const [internalTab, setInternalTab] = useState<'experience' | 'company'>('company');
+  const activeTab = activeTabProp !== undefined ? activeTabProp : internalTab;
+
+  const setActiveTab = (tab: 'experience' | 'company') => {
+    setInternalTab(tab);
+    onTabChange?.(tab);
+  };
   
   // Accordion state: set of open category IDs (모두 처음에 접힌 상태로 기본 설정)
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
@@ -102,10 +112,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({
               PORTFOLIO & TRACK RECORD
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              측량 실적 및 현장 포트폴리오
+              측량 실적 및 현장 경험
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base max-w-2xl">
-              대표자의 20년+ 대형 프로젝트 참여 경험부터 SOUL SURVEY가 현재 직접 수행하고 있는 현장 실적까지 투명하게 공개합니다.
+              대표자의 과거 참여 경험과 SOUL SURVEY가 직접 수행한 현장 실적을 구분하여 소개합니다.
             </p>
           </div>
 

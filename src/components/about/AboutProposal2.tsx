@@ -76,7 +76,7 @@ export const AboutProposal2: React.FC = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
             정교한 측량 현장을 한눈에, <br className="hidden sm:inline" />
-            <span className="text-emerald-700">작지만 정밀한 디오라마</span>처럼 보여드립니다.
+            <span className="text-emerald-700">정밀한 디오라마</span>처럼 보여드립니다.
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
             측량은 차갑고 어려운 엔지니어링이 아닙니다. 땅 위의 모든 경계와 높낮이를 

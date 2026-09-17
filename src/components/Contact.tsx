@@ -115,16 +115,16 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
     <section id="contact" className="py-20 bg-slate-50 border-b border-slate-200 survey-grid-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold mb-2.5">
-            <span>CONTACT & INQUIRY · 대표자 1:1 직통 상담</span>
+        <div className="max-w-3xl mb-12">
+          <div className="text-xs font-bold tracking-wider text-emerald-800 uppercase mb-2">
+            CONTACT & CONSULTATION
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            측량 견적 및 현장 상담 문의
+            측량이 필요한가요?
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            현장 주소와 원하시는 내용만 남겨주시면 도면과 위성 데이터를 사전 검토한 후 
-            가장 정확하고 합리적인 측량 계획을 안내해 드립니다.
+            현장 위치와 필요한 작업을 편하게 말씀해주세요. <br className="hidden sm:inline" />
+            측량 종류를 모르셔도 괜찮습니다.
           </p>
         </div>
 
@@ -199,10 +199,10 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
           {/* Right Column: Detailed Inquiry Form */}
           <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs">
             <h3 className="text-lg font-bold text-slate-900 mb-1">
-              온라인 측량 의뢰 및 견적 요청
+              측량 문의하기
             </h3>
             <p className="text-xs text-slate-500 mb-6">
-              아래 내용을 작성해 주시면 꼼꼼히 사전 검토 후 신속히 연락드리겠습니다.
+              현장 위치와 알고 계신 내용을 편하게 남겨주시면, 대표자가 직접 확인 후 연락드립니다.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">

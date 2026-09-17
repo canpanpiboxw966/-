@@ -133,6 +133,7 @@ export default function App() {
 
   // Admin Modal Open State
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [portfolioTab, setPortfolioTab] = useState<'company' | 'experience'>('company');
 
   // Floating back to top visibility
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -227,13 +228,15 @@ export default function App() {
         <Hero />
 
         {/* 3. About Section */}
-        <About />
+        <About onSelectExperienceTab={() => setPortfolioTab('experience')} />
 
         {/* 4. Portfolio Section (Past experience accordion + Company performance) */}
         <Portfolio
           pastCategories={pastCategories}
           companyProjects={companyProjects}
           onUpdatePastCategories={handleUpdatePastCategories}
+          activeTabProp={portfolioTab}
+          onTabChange={setPortfolioTab}
         />
 
         {/* 5. Services Section (5 General survey fields + GNSS & Drone Tech) */}

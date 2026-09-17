@@ -33,13 +33,13 @@ export const AboutClassic: React.FC = () => {
           ABOUT SOUL SURVEY · CLASSIC STYLE
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-          작지만 가장 든든한 측량 파트너, <br className="hidden sm:inline" />
+          가장 든든한 측량 파트너, <br className="hidden sm:inline" />
           <span className="text-emerald-800">20년+ 현장 경험</span>으로 답합니다.
         </h2>
         <p className="mt-4 text-slate-600 text-base leading-relaxed">
-          SOUL SURVEY는 규모만 큰 종합 엔지니어링 회사의 무거운 절차 대신,
+          SOUL SURVEY는 복잡하고 무거운 절차 대신,
           설계사무소·건설사·현장 소장님이 언제든 부담 없이 연락할 수 있는 
-          ‘작지만 실력 있는 측량 파트너’입니다.
+          ‘실력과 신뢰를 갖춘 측량 파트너’입니다.
         </p>
       </div>
 
