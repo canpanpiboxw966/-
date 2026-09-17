@@ -112,7 +112,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-50 border-b border-slate-200 survey-grid-pattern">
+    <section id="contact" className="py-20 bg-[#F5F4EE] border-b border-stone-200/80 survey-grid-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
@@ -132,7 +132,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
           {/* Left Column: Direct Contact Info & Fast Hotline */}
           <div className="lg:col-span-5 space-y-6">
             {/* Quick Call Box */}
-            <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-sm survey-grid-pattern-dark relative overflow-hidden">
+            <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-xs survey-grid-pattern-dark relative overflow-hidden border border-slate-800">
               <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-bold mb-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span>대표자 직통 상담</span>
@@ -160,9 +160,9 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
             </div>
 
             {/* Operating Info */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-2xs space-y-4 text-xs sm:text-sm">
+            <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-2xs space-y-4 text-xs sm:text-sm">
               <div className="flex items-start gap-3.5">
-                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-lg bg-stone-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
@@ -172,8 +172,8 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 pt-3 border-t border-slate-100">
-                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 pt-3 border-t border-stone-100">
+                <div className="w-8 h-8 rounded-lg bg-stone-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
@@ -183,8 +183,8 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 pt-3 border-t border-slate-100">
-                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 pt-3 border-t border-stone-100">
+                <div className="w-8 h-8 rounded-lg bg-stone-100 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
@@ -197,7 +197,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
           </div>
 
           {/* Right Column: Detailed Inquiry Form */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs">
+          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs">
             <h3 className="text-lg font-bold text-slate-900 mb-1">
               측량 문의하기
             </h3>
@@ -217,7 +217,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="예: 홍길동 소장"
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   />
                 </div>
 
@@ -230,7 +230,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="예: 00건축사사무소, 00건설 (개인은 비워두셔도 됨)"
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -246,7 +246,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="예: 010-1234-5678"
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   />
                 </div>
 
@@ -259,7 +259,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="견적서 수신용 이메일"
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -274,7 +274,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   placeholder="예: 경기도 화성시 남양읍 00리 123번지 일원"
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                 />
               </div>
 
@@ -286,7 +286,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   <select
                     value={formData.serviceType}
                     onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   >
                     {serviceOptions.map((opt, i) => (
                       <option key={i} value={opt}>
@@ -305,7 +305,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                     value={formData.expectedDate}
                     onChange={(e) => setFormData({ ...formData, expectedDate: e.target.value })}
                     placeholder="예: 다음 주 중, 또는 0월 말 이전"
-                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -318,7 +318,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 <div
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={handleFileDrop}
-                  className="border-2 border-dashed border-slate-300 hover:border-emerald-600 rounded-xl p-4 text-center bg-slate-50 hover:bg-emerald-50/30 transition-colors cursor-pointer relative"
+                  className="border-2 border-dashed border-stone-200 hover:border-emerald-600 rounded-xl p-4 text-center bg-stone-50 hover:bg-emerald-50/30 transition-colors cursor-pointer relative"
                 >
                   <input
                     type="file"
@@ -365,7 +365,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="예: 인접 토지와 단차가 심해 옹벽 계획용 현황도가 필요합니다. 언제쯤 도면 납품이 가능한지 알고 싶습니다."
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:bg-white transition-all"
                 />
               </div>
 

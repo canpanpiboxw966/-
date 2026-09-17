@@ -8,7 +8,7 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onSelectExperienceTab }) => {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-50/70 border-b border-slate-200">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-[#F6F6F3] border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main About Story: Content Left, Supportive Visual Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14 sm:mb-16">
@@ -37,8 +37,8 @@ export const About: React.FC<AboutProps> = ({ onSelectExperienceTab }) => {
             </div>
 
             {/* Consolidated Principle Callout */}
-            <div className="mt-7 pt-6 border-t border-slate-200">
-              <div className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-slate-900 bg-white px-4 py-3 rounded-xl border border-slate-200/90 shadow-2xs">
+            <div className="mt-7 pt-6 border-t border-stone-200/80">
+              <div className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-slate-900 bg-white px-4 py-3 rounded-xl border border-stone-200/90 shadow-2xs">
                 <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0" />
                 <span>현장을 직접 확인하고, 필요한 만큼 정확하게 측량합니다.</span>
               </div>
@@ -47,8 +47,8 @@ export const About: React.FC<AboutProps> = ({ onSelectExperienceTab }) => {
 
           {/* Supportive Visual: Clean Diorama Image as Secondary Reference */}
           <div className="lg:col-span-5">
-            <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs">
-              <div className="relative rounded-xl overflow-hidden bg-slate-100">
+            <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 shadow-2xs">
+              <div className="relative rounded-xl overflow-hidden bg-stone-100">
                 <img 
                   src={miniatureImg} 
                   alt="소울측량 지형 데이터 시각화" 

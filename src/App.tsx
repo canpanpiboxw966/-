@@ -212,7 +212,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-emerald-700 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-slate-900 selection:bg-emerald-700 selection:text-white">
       {/* 1. Header */}
       <Header
         onOpenAdmin={() => setIsAdminOpen(true)}
@@ -271,7 +271,7 @@ export default function App() {
           <button
             onClick={scrollToTop}
             aria-label="맨 위로 가기"
-            className="w-10 h-10 rounded-full bg-white/90 text-slate-700 shadow-md border border-slate-200 flex items-center justify-center transition-all"
+            className="w-10 h-10 rounded-full bg-white text-slate-700 shadow-xs border border-stone-200 flex items-center justify-center transition-all"
           >
             <ArrowUp className="w-4 h-4" />
           </button>
@@ -279,7 +279,7 @@ export default function App() {
         <a
           href="tel:010-0000-0000"
           aria-label="전화 통화"
-          className="w-12 h-12 rounded-full bg-emerald-800 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
+          className="w-12 h-12 rounded-full bg-emerald-800 text-white shadow-md flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
         >
           <Phone className="w-5 h-5" />
         </a>
@@ -290,7 +290,7 @@ export default function App() {
         <button
           onClick={scrollToTop}
           aria-label="페이지 맨 위로 이동"
-          className="hidden sm:flex fixed bottom-8 right-8 z-30 w-11 h-11 rounded-full bg-white/95 text-slate-700 hover:text-emerald-800 shadow-md border border-slate-200/90 items-center justify-center hover:shadow-lg transition-all"
+          className="hidden sm:flex fixed bottom-8 right-8 z-30 w-11 h-11 rounded-full bg-white text-slate-700 hover:text-emerald-800 shadow-xs border border-stone-200 items-center justify-center hover:shadow-sm transition-all"
         >
           <ArrowUp className="w-5 h-5" />
         </button>

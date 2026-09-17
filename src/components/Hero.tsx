@@ -4,7 +4,7 @@ import heroMiniatureImg from '../assets/images/survey_miniature_hero_cube_178915
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 overflow-hidden bg-white survey-grid-pattern border-b border-slate-200/80">
+    <section id="hero" className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 overflow-hidden bg-[#FAF9F6] survey-grid-pattern border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           {/* Left Column: Focused Main Copy & Direct Actions */}
@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
               <a
                 id="hero-inquiry-cta"
                 href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-emerald-800 active:scale-98 rounded-xl shadow-sm transition-all group min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-emerald-800 active:scale-98 rounded-xl shadow-xs transition-all group min-h-[48px]"
               >
                 <span>측량 문의하기</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Service Keywords Bar */}
-            <div className="pt-5 border-t border-slate-200/80">
+            <div className="pt-5 border-t border-stone-200/80">
               <div className="text-xs font-semibold text-slate-400 mb-2">주요 일반측량 업무</div>
               <div className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
                 설계측량 <span className="text-slate-300 mx-1.5">·</span> 
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Consolidated Experience Statement */}
-            <div className="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex items-start gap-3">
+            <div className="mt-5 p-4 rounded-xl bg-white border border-stone-200/80 shadow-2xs flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
               <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 <span className="font-bold text-slate-900">2004년부터 현장에서 측량해왔습니다.</span> <br />
@@ -83,8 +83,8 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: Clean, Tasteful Visual (No Tech Clutter) */}
           <div className="lg:col-span-5">
-            <div className="bg-gradient-to-b from-slate-50 via-white to-slate-50 rounded-3xl p-4 sm:p-5 border border-slate-200 shadow-sm relative overflow-hidden group">
-              <div className="relative rounded-2xl overflow-hidden shadow-xs border border-slate-200 bg-slate-100">
+            <div className="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-2xs relative overflow-hidden group">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xs border border-stone-200 bg-stone-100">
                 <img 
                   src={heroMiniatureImg} 
                   alt="소울측량 현장 디오라마" 

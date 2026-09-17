@@ -49,7 +49,7 @@ export const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-[#F8F8F5] border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-10 sm:mb-12">
@@ -71,14 +71,14 @@ export const Services: React.FC = () => {
             return (
               <div
                 key={srv.num}
-                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:border-emerald-300 hover:shadow-xs transition-all flex flex-col justify-between group"
+                className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xs transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-xs font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200/80">
                       {srv.num}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-emerald-100 text-slate-700 group-hover:text-emerald-800 flex items-center justify-center transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-stone-100 group-hover:bg-emerald-50 text-slate-700 group-hover:text-emerald-800 flex items-center justify-center transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -96,7 +96,7 @@ export const Services: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-4 mt-5 border-t border-stone-100 flex items-center justify-between">
                   <span className="text-xs text-slate-400">CAD 도면 + 성과조서</span>
                   <a
                     href="#contact"
@@ -112,9 +112,9 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Technology Sub-banner: GNSS & Drone */}
-        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/90 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-stone-100 text-slate-700 flex items-center justify-center flex-shrink-0">
               <Satellite className="w-5 h-5" />
             </div>
             <div>
@@ -131,7 +131,7 @@ export const Services: React.FC = () => {
           </div>
           <a
             href="#contact"
-            className="self-start sm:self-auto px-4 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors whitespace-nowrap"
+            className="self-start sm:self-auto px-4 py-2 text-xs font-bold text-slate-800 bg-stone-100 hover:bg-stone-200/90 rounded-xl transition-colors whitespace-nowrap"
           >
             측량방법 문의하기
           </a>

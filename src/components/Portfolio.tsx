@@ -103,7 +103,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
     : companyProjects.filter(p => p.category === selectedFilter);
 
   return (
-    <section id="portfolio" className="py-20 bg-white border-b border-slate-200">
+    <section id="portfolio" className="py-20 bg-[#FAF9F6] border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -120,13 +120,13 @@ export const Portfolio: React.FC<PortfolioProps> = ({
           </div>
 
           {/* Primary View Switcher Tabs (회사 수행실적이 먼저 노출) */}
-          <div className="w-full md:w-auto flex p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+          <div className="w-full md:w-auto flex p-1.5 bg-stone-100/90 rounded-2xl border border-stone-200/80">
             <button
               id="tab-company-btn"
               onClick={() => setActiveTab('company')}
               className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
                 activeTab === 'company'
-                  ? 'bg-white text-emerald-900 shadow-xs'
+                  ? 'bg-white text-emerald-900 shadow-2xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -139,7 +139,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
               onClick={() => setActiveTab('experience')}
               className={`flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all min-h-[44px] select-none ${
                 activeTab === 'experience'
-                  ? 'bg-white text-emerald-900 shadow-xs'
+                  ? 'bg-white text-emerald-900 shadow-2xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -211,7 +211,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
                     className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                       isOpen
                         ? 'border-emerald-700/50 bg-white shadow-xs'
-                        : 'border-slate-200 bg-white hover:border-slate-300 shadow-2xs'
+                        : 'border-stone-200/90 bg-white hover:border-stone-300 shadow-2xs'
                     }`}
                   >
                     {/* Header: Photo + First Project (Always Visible) */}

@@ -10,9 +10,9 @@ export const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-8 sm:py-10 bg-white border-b border-slate-200">
+    <section id="process" className="py-8 sm:py-10 bg-[#FAF9F6] border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 sm:p-6">
+        <div className="bg-[#F6F6F3] border border-stone-200/90 rounded-2xl p-5 sm:p-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex-shrink-0">
               <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-0.5">
@@ -30,7 +30,7 @@ export const Process: React.FC = () => {
                   <div className={`px-3 py-1.5 rounded-xl border transition-all ${
                     idx === steps.length - 1
                       ? 'bg-emerald-50 text-emerald-900 border-emerald-300 shadow-2xs'
-                      : 'bg-white text-slate-800 border-slate-200/90 shadow-2xs'
+                      : 'bg-white text-slate-800 border-stone-200/90 shadow-2xs'
                   }`}>
                     <span>{step.label}</span>
                   </div>
