@@ -64,11 +64,29 @@ function aistudioMediaPlugin(): Plugin {
 }
 // LINT.ThenChange(//depot/google3/java/com/google/alkali/boq/makersuite/applet_dev_service/templates/initializers/react_theme/vite.config.ts:aistudio_media_plugin)
 
+// Dev-mode handler to simulate Netlify Forms endpoint during local dev and AI Studio preview
+function netlifyFormsDevPlugin(): Plugin {
+  return {
+    name: 'vite-plugin-netlify-forms-dev',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.method === 'POST' && (req.url === '/' || req.url?.startsWith('/?'))) {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.end('OK');
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
+
 import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), aistudioMediaPlugin(), viteSingleFile()],
+    plugins: [react(), tailwindcss(), aistudioMediaPlugin(), netlifyFormsDevPlugin(), viteSingleFile()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

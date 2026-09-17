@@ -26,6 +26,20 @@
     </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-teal-700 selection:text-white">
+    <!-- Netlify Forms Discovery Blueprint (Build-time detection for Netlify bot) -->
+    <form name="survey-inquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="survey-inquiry" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="site-location" />
+      <input type="text" name="survey-type" />
+      <input type="text" name="desired-date" />
+      <textarea name="message"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
