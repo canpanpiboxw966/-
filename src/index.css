@@ -12,20 +12,34 @@
   }
 }
 
-/* CSS Scroll Snap: 화면(섹션) 단위 스크롤 */
+:root {
+  --footer-height: 220px;
+}
+
+/* 푸터 하단 고정 (Fixed Footer) */
+footer,
+#main-footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}
+
+/* CSS Scroll Snap: 화면(섹션) 단위 스크롤 (푸터 높이를 제외한 calc(100vh - 푸터높이)) */
 .snap-section,
 #hero,
 #about,
 #portfolio,
 #services,
-#contact,
-#main-footer {
-  height: 100vh;
-  height: 100dvh;
+#contact {
+  height: calc(100vh - var(--footer-height, 220px));
+  height: calc(100dvh - var(--footer-height, 220px));
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 2rem;
 }
 
 /* 섹션 내부 스크롤바 미세 스타일링 */
@@ -34,8 +48,7 @@
 #about::-webkit-scrollbar,
 #portfolio::-webkit-scrollbar,
 #services::-webkit-scrollbar,
-#contact::-webkit-scrollbar,
-#main-footer::-webkit-scrollbar {
+#contact::-webkit-scrollbar {
   width: 5px;
 }
 

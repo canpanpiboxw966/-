@@ -262,12 +262,15 @@ export default function App() {
       />
 
       {/* Mobile Floating Quick Action Hotline */}
-      <div className="fixed bottom-5 right-4 z-30 flex flex-col gap-2.5 sm:hidden">
+      <div 
+        className="fixed right-4 z-[1001] flex flex-col gap-2.5 sm:hidden"
+        style={{ bottom: 'calc(var(--footer-height, 220px) + 12px)' }}
+      >
         {showScrollTop && (
           <button
             onClick={scrollToTop}
             aria-label="맨 위로 가기"
-            className="w-10 h-10 rounded-full bg-white text-slate-700 shadow-xs border border-stone-200 flex items-center justify-center transition-all"
+            className="w-10 h-10 rounded-full bg-white text-slate-700 shadow-md border border-stone-200 flex items-center justify-center transition-all"
           >
             <ArrowUp className="w-4 h-4" />
           </button>
@@ -286,7 +289,8 @@ export default function App() {
         <button
           onClick={scrollToTop}
           aria-label="페이지 맨 위로 이동"
-          className="hidden sm:flex fixed bottom-8 right-8 z-30 w-11 h-11 rounded-full bg-white text-slate-700 hover:text-emerald-800 shadow-xs border border-stone-200 items-center justify-center hover:shadow-sm transition-all"
+          className="hidden sm:flex fixed right-8 z-[1001] w-11 h-11 rounded-full bg-white text-slate-700 hover:text-emerald-800 shadow-md border border-stone-200 items-center justify-center hover:shadow-lg transition-all"
+          style={{ bottom: 'calc(var(--footer-height, 220px) + 16px)' }}
         >
           <ArrowUp className="w-5 h-5" />
         </button>
