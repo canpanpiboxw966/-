@@ -24,6 +24,14 @@
       const ADMIN_PASSWORD = "0330";
       window.ADMIN_PASSWORD = ADMIN_PASSWORD;
     </script>
+    <style>
+      /* Netlify 위젯 배지 숨기기 */
+      [data-netlify-deploy-id],
+      #netlify-badge,
+      iframe[src*="netlify"] {
+        display: none !important;
+      }
+    </style>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-teal-700 selection:text-white">
     <!-- Netlify Forms Discovery Blueprint (Build-time detection for Netlify bot) -->
