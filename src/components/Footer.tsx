@@ -8,8 +8,8 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   return (
-    <footer id="main-footer" className="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="main-footer" className="bg-slate-900 text-slate-300 pt-20 pb-12 border-t border-slate-800 snap-section flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
           {/* Company Brand Column */}
           <div className="lg:col-span-5 space-y-4">
@@ -21,6 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
 
             <div className="pt-2 text-xs text-slate-400 space-y-1 font-normal">
               <div>상호: 소울측량 (SOUL SURVEY) | 대표자 직접 총괄</div>
+              <div>사무실주소: 서울특별시 송파구 송파대로 366-9번지 101호, 우편번호05676</div>
               <div>사업분야: 일반측량(설계·공사·지형현황·하천·시설물유지관리), GNSS, 드론 항공측량</div>
               <div>출장지역: 수도권(서울·경기·인천) 및 전국 주요 토목·건축 현장</div>
             </div>
@@ -48,12 +49,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 <a href="#services" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
                   <ChevronRight className="w-3 h-3 text-slate-600" />
                   <span>업무 분야 및 핵심 기술</span>
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3 text-slate-600" />
-                  <span>7단계 진행 절차</span>
                 </a>
               </li>
               <li>

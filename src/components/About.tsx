@@ -8,8 +8,8 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onSelectExperienceTab }) => {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-[#F6F6F3] border-b border-stone-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#F6F6F3] border-b border-stone-200/80 snap-section flex flex-col">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
         {/* Main About Story: Content Left, Supportive Visual Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14 sm:mb-16">
           <div className="lg:col-span-7">

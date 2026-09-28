@@ -131,7 +131,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#F5F4EE] border-b border-stone-200/80 survey-grid-pattern">
+    <section id="contact" className="pt-24 pb-16 sm:pt-28 sm:pb-20 bg-[#F5F4EE] border-b border-stone-200/80 survey-grid-pattern snap-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
@@ -196,9 +196,9 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">측량 출장 가능 지역</div>
-                  <div className="text-slate-600 mt-0.5">수도권 전 지역 (서울·경기·인천) 및 전국 주요 현장</div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">원거리 광역 현장 GNSS / 드론 측량 출장 지원</div>
+                  <div className="font-bold text-slate-900">사무실 주소 및 출장 지역</div>
+                  <div className="text-slate-700 font-medium mt-0.5">서울특별시 송파구 송파대로 366-9번지 101호, 우편번호05676</div>
+                  <div className="text-[11px] text-slate-400 mt-0.5">수도권 전 지역 (서울·경기·인천) 및 전국 주요 현장 출장 지원</div>
                 </div>
               </div>
 

@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Portfolio } from './components/Portfolio';
 import { Services } from './components/Services';
-import { Process } from './components/Process';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { AdminModal } from './components/AdminModal';
@@ -242,10 +241,7 @@ export default function App() {
         {/* 5. Services Section (5 General survey fields + GNSS & Drone Tech) */}
         <Services />
 
-        {/* 6. Process Section (7 steps) */}
-        <Process />
-
-        {/* 7. Contact Section (Direct Call + Estimate Request Form) */}
+        {/* 6. Contact Section (Direct Call + Estimate Request Form) */}
         <Contact onInquirySubmitted={handleAddInquiry} />
       </main>
 

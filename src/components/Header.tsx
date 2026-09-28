@@ -34,7 +34,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
     { label: '회사소개', href: '#about' },
     { label: '주요실적', href: '#portfolio' },
     { label: '업무분야', href: '#services' },
-    { label: '진행절차', href: '#process' },
     { label: '측량문의', href: '#contact' },
   ];
 
@@ -49,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo (Responsive sizing) */}
-        <a href="#" className="flex items-center group transition-transform active:scale-98">
+        <a href="#hero" className="flex items-center group transition-transform active:scale-98">
           <SoulSurveyLogo variant="horizontal" size="md" />
         </a>
 

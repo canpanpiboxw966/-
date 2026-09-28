@@ -1,11 +1,73 @@
 @import "tailwindcss";
 
 @layer base {
+  html, body {
+    scroll-snap-type: y mandatory;
+  }
+
   body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
     background-color: #FAF9F6;
     color: #1E293B;
   }
+}
+
+/* CSS Scroll Snap: 화면(섹션) 단위 스크롤 */
+.snap-section,
+#hero,
+#about,
+#portfolio,
+#services,
+#contact,
+#main-footer {
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 섹션 내부 스크롤바 미세 스타일링 */
+.snap-section::-webkit-scrollbar,
+#hero::-webkit-scrollbar,
+#about::-webkit-scrollbar,
+#portfolio::-webkit-scrollbar,
+#services::-webkit-scrollbar,
+#contact::-webkit-scrollbar,
+#main-footer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.snap-section::-webkit-scrollbar-track,
+#hero::-webkit-scrollbar-track,
+#about::-webkit-scrollbar-track,
+#portfolio::-webkit-scrollbar-track,
+#services::-webkit-scrollbar-track,
+#contact::-webkit-scrollbar-track,
+#main-footer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.snap-section::-webkit-scrollbar-thumb,
+#hero::-webkit-scrollbar-thumb,
+#about::-webkit-scrollbar-thumb,
+#portfolio::-webkit-scrollbar-thumb,
+#services::-webkit-scrollbar-thumb,
+#contact::-webkit-scrollbar-thumb,
+#main-footer::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.25);
+  border-radius: 9999px;
+}
+
+.snap-section::-webkit-scrollbar-thumb:hover,
+#hero::-webkit-scrollbar-thumb:hover,
+#about::-webkit-scrollbar-thumb:hover,
+#portfolio::-webkit-scrollbar-thumb:hover,
+#services::-webkit-scrollbar-thumb:hover,
+#contact::-webkit-scrollbar-thumb:hover,
+#main-footer::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.5);
 }
 
 /* Very subtle CAD / Surveying drafting paper grid (whisper-soft, delicate) */

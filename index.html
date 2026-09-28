@@ -31,6 +31,41 @@
       iframe[src*="netlify"] {
         display: none !important;
       }
+
+      /* Netlify 강제 주입 프로모션 뱃지 및 iframe 완벽 차단 */
+      netlify-badge,
+      #netlify-badge,
+      [class*="netlify"],
+      [id*="netlify"],
+      iframe[src*="netlify"],
+      div[style*="z-index: 2147483647"],
+      div[style*="position: fixed"][style*="bottom"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* CSS Scroll Snap: 한 화면(섹션) 단위 스크롤 */
+      html, body {
+        scroll-snap-type: y mandatory;
+      }
+
+      /* 각 섹션 100vh 및 스크롤 스냅, 오버플로우 자동 스크롤 */
+      #hero,
+      #about,
+      #portfolio,
+      #services,
+      #contact,
+      #main-footer,
+      .snap-section {
+        height: 100vh;
+        height: 100dvh;
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-teal-700 selection:text-white">
@@ -50,6 +85,19 @@
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      // Netlify 강제 주입 뱃지 감지 및 삭제
+      const removeNetlifyBadge = () => {
+        const badgeElements = document.querySelectorAll('netlify-badge, #netlify-badge, [id*="netlify"], [class*="netlify"]');
+        badgeElements.forEach(el => el.remove());
+      };
+
+      // 페이지 로드 시 및 일정 시간 동안 반복 실행하여 완전히 제거
+      window.addEventListener('DOMContentLoaded', removeNetlifyBadge);
+      window.addEventListener('load', removeNetlifyBadge);
+      setInterval(removeNetlifyBadge, 500);
+    </script>
   </body>
 </html>
 

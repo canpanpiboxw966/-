@@ -4,8 +4,8 @@ import heroMiniatureImg from '../assets/images/survey_miniature_hero_cube_178915
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 overflow-hidden bg-[#FAF9F6] survey-grid-pattern border-b border-stone-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="hero" className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#FAF9F6] survey-grid-pattern border-b border-stone-200/80 snap-section flex flex-col">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           {/* Left Column: Focused Main Copy & Direct Actions */}
           <div className="lg:col-span-7">

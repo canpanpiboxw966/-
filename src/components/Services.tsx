@@ -49,8 +49,8 @@ export const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-[#F8F8F5] border-b border-stone-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#F8F8F5] border-b border-stone-200/80 snap-section flex flex-col">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
         {/* Section Header */}
         <div className="max-w-2xl mb-10 sm:mb-12">
           <div className="text-xs font-bold tracking-wider text-emerald-800 uppercase mb-2">
