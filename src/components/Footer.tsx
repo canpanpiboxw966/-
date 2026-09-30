@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
 import { Phone, Mail, Lock, ChevronRight } from 'lucide-react';
 
@@ -7,50 +7,12 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
-  const footerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (footerRef.current) {
-        const height = footerRef.current.offsetHeight;
-        if (height > 0) {
-          document.documentElement.style.setProperty('--footer-height', `${height}px`);
-        }
-      }
-    };
-
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateHeight();
-    });
-
-    if (footerRef.current) {
-      resizeObserver.observe(footerRef.current);
-    }
-
-    window.addEventListener('resize', updateHeight);
-
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener('resize', updateHeight);
-    };
-  }, []);
-
   return (
     <footer
-      ref={footerRef}
       id="main-footer"
-      className="fixed bottom-0 left-0 w-full z-[1000] bg-slate-900 text-slate-300 border-t border-slate-800 shadow-2xl"
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 1000,
-      }}
+      className="w-full bg-slate-900 text-slate-300 border-t border-slate-800 scroll-snap-align-start relative z-10"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 max-h-[38vh] sm:max-h-none overflow-y-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-8 pb-3 border-b border-slate-800/90 items-start">
           {/* Company Brand Column */}
           <div className="lg:col-span-5 space-y-1.5">
