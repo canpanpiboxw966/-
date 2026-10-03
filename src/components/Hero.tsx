@@ -42,11 +42,11 @@ export const Hero: React.FC = () => {
 
               <a
                 id="hero-phone-cta"
-                href="tel:010-0000-0000"
+                href="tel:010-2322-0029"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-base font-bold text-slate-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:bg-emerald-200 rounded-xl transition-colors min-h-[48px]"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-700" />
-                <span>전화하기 (010-0000-0000)</span>
+                <span>전화하기 (010-2322-0029)</span>
               </a>
 
               <a

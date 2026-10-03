@@ -70,12 +70,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
           {/* Direct Phone Call */}
           <a
             id="header-phone-btn"
-            href="tel:010-0000-0000"
+            href="tel:010-2322-0029"
             className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl transition-colors"
             title="대표 번호 직통 통화"
           >
             <Phone className="w-3.5 h-3.5 text-emerald-700" />
-            <span>010-0000-0000</span>
+            <span>010-2322-0029</span>
           </a>
 
           {/* Quick Inquiry Button */}
@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
         <div className="flex md:hidden items-center gap-1.5">
           {/* Quick Call Button on Mobile */}
           <a
-            href="tel:010-0000-0000"
+            href="tel:010-2322-0029"
             className="p-2.5 text-emerald-800 bg-emerald-50 active:bg-emerald-100 rounded-xl border border-emerald-200 flex items-center justify-center min-w-[44px] min-h-[44px]"
             aria-label="전화 연결"
           >
@@ -144,11 +144,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
           {/* Mobile Quick Action Buttons */}
           <div className="pt-4 mt-3 border-t border-slate-100 space-y-2.5">
             <a
-              href="tel:010-0000-0000"
+              href="tel:010-2322-0029"
               className="flex items-center justify-center gap-2 py-3.5 px-4 text-sm font-bold text-slate-900 bg-slate-100 active:bg-slate-200 rounded-xl border border-slate-200/80 w-full min-h-[46px]"
             >
               <Phone className="w-4 h-4 text-emerald-700" />
-              <span>전화문의: 010-0000-0000</span>
+              <span>전화문의: 010-2322-0029</span>
             </a>
 
             <a

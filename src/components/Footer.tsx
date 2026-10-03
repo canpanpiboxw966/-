@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             </div>
             <div className="space-y-2">
               <a
-                href="tel:010-0000-0000"
+                href="tel:010-2322-0029"
                 className="flex items-center gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-slate-700/60 transition-colors text-white font-mono"
               >
                 <div className="w-6 h-6 rounded-md bg-emerald-800 text-white flex items-center justify-center flex-shrink-0">
@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-slate-400 font-sans">대표자 직통 상담</span>
-                  <span className="text-xs sm:text-sm font-bold tracking-wide">010-0000-0000</span>
+                  <span className="text-xs sm:text-sm font-bold tracking-wide">010-2322-0029</span>
                 </div>
               </a>
 

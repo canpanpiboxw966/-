@@ -162,7 +162,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
               </p>
 
               <a
-                href="tel:010-0000-0000"
+                href="tel:010-2322-0029"
                 className="flex items-center justify-between p-4 bg-emerald-700 hover:bg-emerald-600 rounded-xl transition-colors font-bold text-white shadow-xs group"
               >
                 <div className="flex items-center gap-3">
@@ -171,7 +171,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   </div>
                   <div>
                     <div className="text-[11px] text-emerald-200 font-medium">대표 직통 전화 (터치 시 통화)</div>
-                    <div className="text-lg tracking-wider font-mono">010-0000-0000</div>
+                    <div className="text-lg tracking-wider font-mono">010-2322-0029</div>
                   </div>
                 </div>
                 <span className="text-xs bg-emerald-800/80 px-2.5 py-1 rounded">연결</span>
@@ -395,7 +395,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   <div className="flex-1">
                     <div className="font-bold">{errorMessage}</div>
                     <div className="mt-0.5 text-xs text-red-600/90">
-                      네트워크 연결을 확인하신 후 다시 시도해 주세요. 급하신 경우 직통전화(010-0000-0000)로 즉시 연락 가능합니다.
+                      네트워크 연결을 확인하신 후 다시 시도해 주세요. 급하신 경우 직통전화(010-2322-0029)로 즉시 연락 가능합니다.
                     </div>
                   </div>
                 </div>
@@ -441,11 +441,11 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
 
             <div className="flex flex-col gap-2">
               <a
-                href="tel:010-0000-0000"
+                href="tel:010-2322-0029"
                 className="w-full py-2.5 px-4 rounded-xl bg-emerald-800 text-white font-bold text-xs flex items-center justify-center gap-2 hover:bg-emerald-900 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>급하신 경우 직통 전화 (010-0000-0000)</span>
+                <span>급하신 경우 직통 전화 (010-2322-0029)</span>
               </a>
               <button
                 type="button"
