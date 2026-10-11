@@ -196,9 +196,11 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">사무실 주소 및 출장 지역</div>
-                  <div className="text-slate-700 font-medium mt-0.5">서울특별시 송파구 송파대로 366-9번지 101호, 우편번호05676</div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">수도권 전 지역 (서울·경기·인천) 및 전국 주요 현장 출장 지원</div>
+                  <div className="font-bold text-slate-900">사무실 주소 및 사업자 정보</div>
+                  <div className="text-slate-700 font-medium mt-0.5">서울특별시 송파구 송파대로 366-9번지 101호, 우편번호 05676</div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">
+                    사업자등록번호: 371-45-01431 · 수도권 및 전국 현장 출장 지원
+                  </div>
                 </div>
               </div>
 

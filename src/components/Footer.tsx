@@ -19,8 +19,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             <SoulSurveyLogo variant="full" theme="dark" size="sm" />
 
             <div className="text-[11px] sm:text-xs text-slate-400 space-y-1 font-normal pt-1 leading-relaxed">
-              <div>상호: 소울측량 (SOUL SURVEY) | 대표자 직접 총괄</div>
-              <div>사무실주소: 서울특별시 송파구 송파대로 366-9번지 101호, 우편번호05676</div>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                <span>상호: 소울측량 (SOUL SURVEY)</span>
+                <span className="text-slate-600 hidden sm:inline">|</span>
+                <span>사업자등록번호: 371-45-01431</span>
+                <span className="text-slate-600 hidden sm:inline">|</span>
+                <span>대표자 직접 총괄</span>
+              </div>
+              <div>사무실주소: 서울특별시 송파구 송파대로 366-9번지 101호, 우편번호 05676</div>
               <div>사업분야: 일반측량(설계·공사·지형현황·하천·시설물유지관리), GNSS, 드론 항공측량</div>
               <div>출장지역: 수도권(서울·경기·인천) 및 전국 주요 토목·건축 현장</div>
             </div>
