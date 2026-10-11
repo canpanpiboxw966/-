@@ -273,7 +273,7 @@ export default function App() {
           </button>
         )}
         <a
-          href="tel:010-2322-0029"
+          href="tel:010-2322-0092"
           aria-label="전화 통화"
           className="w-12 h-12 rounded-full bg-emerald-800 text-white shadow-md flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
         >
