@@ -1,6 +1,6 @@
 import React from 'react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
-import { Phone, Mail, Lock, Building2 } from 'lucide-react';
+import { Phone, Mail, Lock, Building } from 'lucide-react';
 
 interface FooterProps {
   onOpenAdmin: () => void;
@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 className="flex items-center gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-slate-700/60 transition-colors text-white font-mono"
               >
                 <div className="w-6 h-6 rounded-md bg-slate-700 text-emerald-400 flex items-center justify-center flex-shrink-0">
-                  <Building2 className="w-3.5 h-3.5" />
+                  <Building className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-slate-400 font-sans">사무실 대표전화</span>
