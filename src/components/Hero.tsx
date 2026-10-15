@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall, ChevronDown, CheckCircle2, Building2 } from 'lucide-react';
+import { ArrowRight, PhoneCall, ChevronDown, CheckCircle2, Building } from 'lucide-react';
 import heroMiniatureImg from '../assets/images/survey_miniature_hero_cube_1789151725760.jpg';
 
 export const Hero: React.FC = () => {
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 text-sm sm:text-base font-bold text-slate-800 bg-stone-100 hover:bg-stone-200 border border-stone-300/80 active:bg-stone-300 rounded-xl transition-colors min-h-[48px]"
                 title="사무실 전화 연결"
               >
-                <Building2 className="w-4 h-4 text-slate-600" />
+                <Building className="w-4 h-4 text-slate-600" />
                 <span>사무실 (02-6082-0092)</span>
               </a>
 
