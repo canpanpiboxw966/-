@@ -10,7 +10,7 @@ import {
   FileText,
   AlertCircle,
   Loader2,
-  Building2
+  Building
 } from 'lucide-react';
 import { InquiryRecord } from '../types';
 
@@ -162,7 +162,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-slate-700 flex items-center justify-center">
-                    <Building2 className="w-4 h-4 text-emerald-400" />
+                    <Building className="w-4 h-4 text-emerald-400" />
                   </div>
                   <div>
                     <div className="text-[11px] text-slate-300 font-medium">사무실 대표전화 (터치 시 통화)</div>
@@ -460,7 +460,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 href="tel:02-6082-0092"
                 className="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors"
               >
-                <Building2 className="w-4 h-4 text-slate-500" />
+                <Building className="w-4 h-4 text-slate-500" />
                 <span>사무실 유선 전화 (02-6082-0092)</span>
               </a>
               <button
