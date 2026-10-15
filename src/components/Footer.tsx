@@ -1,6 +1,6 @@
 import React from 'react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
-import { Phone, Mail, Lock } from 'lucide-react';
+import { Phone, Mail, Lock, Building2 } from 'lucide-react';
 
 interface FooterProps {
   onOpenAdmin: () => void;
@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 <span className="text-slate-600 hidden sm:inline">|</span>
                 <span>사업자등록번호: 371-45-01431</span>
                 <span className="text-slate-600 hidden sm:inline">|</span>
-                <span>대표자 직접 총괄</span>
+                <span>TEL: 02-6082-0092</span>
               </div>
               <div>사무실주소: 서울특별시 송파구 송파대로 366-9번지 101호, 우편번호 05676</div>
               <div>사업분야: 일반측량(설계·공사·지형현황·하천·시설물유지관리), GNSS, 드론 항공측량</div>
@@ -32,12 +32,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
             </div>
           </div>
 
-          {/* Right Column: Customer Consultation & Estimate */}
+          {/* Right Column: Customer Consultation & Estimate (병행 표기 적용) */}
           <div className="lg:col-span-5 space-y-2.5">
             <div className="text-white font-bold text-xs tracking-wider uppercase">
               고객 상담 및 견적 접수
             </div>
             <div className="space-y-2">
+              {/* 사무실 전화 버튼 */}
+              <a
+                href="tel:02-6082-0092"
+                className="flex items-center gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-slate-700/60 transition-colors text-white font-mono"
+              >
+                <div className="w-6 h-6 rounded-md bg-slate-700 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-400 font-sans">사무실 대표전화</span>
+                  <span className="text-xs sm:text-sm font-bold tracking-wide">02-6082-0092</span>
+                </div>
+              </a>
+
+              {/* 대표 직통 전화 버튼 */}
               <a
                 href="tel:010-2322-0092"
                 className="flex items-center gap-2.5 p-2 sm:p-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-slate-700/60 transition-colors text-white font-mono"
@@ -51,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
                 </div>
               </a>
 
-              <div className="flex items-center gap-1.5 text-slate-300 text-xs">
+              <div className="flex items-center gap-1.5 text-slate-300 text-xs pt-1">
                 <Mail className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                 <span className="font-mono">soulsurvey@naver.com</span>
               </div>
