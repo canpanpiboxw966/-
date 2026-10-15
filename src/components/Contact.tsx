@@ -9,7 +9,8 @@ import {
   PhoneCall,
   FileText,
   AlertCircle,
-  Loader2
+  Loader2,
+  Building2
 } from 'lucide-react';
 import { InquiryRecord } from '../types';
 
@@ -50,7 +51,6 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
     setErrorMessage(null);
     setIsSubmitting(true);
 
-    // Prepare URL-encoded form data for Netlify Forms
     const formParams = new URLSearchParams();
     formParams.append('form-name', 'survey-inquiry');
     if (botField) {
@@ -66,7 +66,6 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
     formParams.append('message', formData.message.trim());
 
     try {
-      // Netlify Forms expects POST to "/" with application/x-www-form-urlencoded
       const response = await fetch('/', {
         method: 'POST',
         headers: {
@@ -75,7 +74,6 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
         body: formParams.toString(),
       });
 
-      // ONLY show success if the Netlify POST request actually succeeds
       if (!response.ok) {
         throw new Error(`POST submission failed with status: ${response.status}`);
       }
@@ -103,10 +101,8 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
         status: 'pending',
       };
 
-      // Save to parent state and localStorage for internal records
       onInquirySubmitted(newRecord);
 
-      // Reset form on success
       setFormData({
         name: '',
         company: '',
@@ -119,13 +115,11 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
       });
       setBotField('');
 
-      // Display success modal
       setShowSuccessModal(true);
     } catch (err) {
       console.error('Netlify Forms submission error:', err);
-      // DO NOT display success message on failure; display clear error notice
       setErrorMessage('문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-    } finally {
+    } fontally {
       setIsSubmitting(false);
     }
   };
@@ -150,31 +144,49 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Direct Contact Info & Fast Hotline */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Quick Call Box */}
-            <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-xs survey-grid-pattern-dark relative overflow-hidden border border-slate-800">
-              <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-bold mb-2">
+            {/* Quick Call Box (병행 표기 적용) */}
+            <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-xs survey-grid-pattern-dark relative overflow-hidden border border-slate-800 space-y-3">
+              <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-bold mb-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>대표자 직통 상담</span>
+                <span>빠른 전화 상담 안내</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">급한 현장 일정이나 궁금한 점은 즉시 전화주세요</h3>
-              <p className="text-xs text-slate-300 leading-relaxed mb-6">
+              <h3 className="text-xl font-bold mb-1">급한 현장 일정이나 궁금한 점은 즉시 전화주세요</h3>
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
                 현장 소장님, 설계 담당자님의 상황을 바로 알아듣고 즉각 대처해 드립니다.
               </p>
 
+              {/* 사무실 전화 버튼 */}
               <a
-                href="tel:010-2322-0092"
-                className="flex items-center justify-between p-4 bg-emerald-700 hover:bg-emerald-600 rounded-xl transition-colors font-bold text-white shadow-xs group"
+                href="tel:02-6082-0092"
+                className="flex items-center justify-between p-3.5 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors font-bold text-white shadow-xs group border border-slate-700"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-800 flex items-center justify-center">
-                    <PhoneCall className="w-5 h-5 text-white" />
+                  <div className="w-9 h-9 rounded-lg bg-slate-700 flex items-center justify-center">
+                    <Building2 className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-slate-300 font-medium">사무실 대표전화 (터치 시 통화)</div>
+                    <div className="text-base tracking-wider font-mono">02-6082-0092</div>
+                  </div>
+                </div>
+                <span className="text-xs bg-slate-700 px-2.5 py-1 rounded text-slate-200">사무실</span>
+              </a>
+
+              {/* 대표 직통 전화 버튼 */}
+              <a
+                href="tel:010-2322-0092"
+                className="flex items-center justify-between p-3.5 bg-emerald-700 hover:bg-emerald-600 rounded-xl transition-colors font-bold text-white shadow-xs group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-emerald-800 flex items-center justify-center">
+                    <PhoneCall className="w-4 h-4 text-white" />
                   </div>
                   <div>
                     <div className="text-[11px] text-emerald-200 font-medium">대표 직통 전화 (터치 시 통화)</div>
-                    <div className="text-lg tracking-wider font-mono">010-2322-0092</div>
+                    <div className="text-base tracking-wider font-mono">010-2322-0092</div>
                   </div>
                 </div>
-                <span className="text-xs bg-emerald-800/80 px-2.5 py-1 rounded">연결</span>
+                <span className="text-xs bg-emerald-800/80 px-2.5 py-1 rounded">현장직통</span>
               </a>
             </div>
 
@@ -199,7 +211,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                   <div className="font-bold text-slate-900">사무실 주소 및 사업자 정보</div>
                   <div className="text-slate-700 font-medium mt-0.5">서울특별시 송파구 송파대로 366-9번지 101호, 우편번호 05676</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">
-                    사업자등록번호: 371-45-01431 · 수도권 및 전국 현장 출장 지원
+                    사업자등록번호: 371-45-01431 · TEL: 02-6082-0092
                   </div>
                 </div>
               </div>
@@ -217,7 +229,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
             </div>
           </div>
 
-          {/* Right Column: Detailed Inquiry Form (Real Netlify Forms) */}
+          {/* Right Column: Detailed Inquiry Form */}
           <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs">
             <h3 className="text-lg font-bold text-slate-900 mb-1">
               측량 문의하기
@@ -235,10 +247,8 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
               onSubmit={handleSubmit}
               className="space-y-4"
             >
-              {/* Required by Netlify Forms to bind to survey-inquiry form */}
               <input type="hidden" name="form-name" value="survey-inquiry" />
 
-              {/* Netlify Honeypot Bot Field (Invisible to human users) */}
               <p className="hidden" aria-hidden="true">
                 <label>
                   Don't fill this out if you're human:{' '}
@@ -377,7 +387,6 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 />
               </div>
 
-              {/* Notice for Drawings & Field Files (Replaced upload UI) */}
               <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/90 flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg bg-stone-200/70 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <FileText className="w-3.5 h-3.5 text-slate-600" />
@@ -390,14 +399,13 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 </div>
               </div>
 
-              {/* Submission Error Banner */}
               {errorMessage && (
                 <div className="p-3.5 rounded-xl bg-red-50/90 border border-red-200 text-xs sm:text-sm text-red-700 flex items-start gap-2.5">
                   <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
                   <div className="flex-1">
                     <div className="font-bold">{errorMessage}</div>
                     <div className="mt-0.5 text-xs text-red-600/90">
-                      네트워크 연결을 확인하신 후 다시 시도해 주세요. 급하신 경우 직통전화(010-2322-0092)로 즉시 연락 가능합니다.
+                      네트워크 연결을 확인하신 후 다시 시도해 주세요. 급하신 경우 직통전화(010-2322-0092) 또는 사무실(02-6082-0092)로 연락 가능합니다.
                     </div>
                   </div>
                 </div>
@@ -427,7 +435,6 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
         </div>
       </div>
 
-      {/* Submission Success Confirmation Modal (Only displayed when POST successfully completes) */}
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 text-center">
@@ -449,12 +456,19 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
                 <Phone className="w-4 h-4" />
                 <span>급하신 경우 직통 전화 (010-2322-0092)</span>
               </a>
+              <a
+                href="tel:02-6082-0092"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 hover:bg-slate-200 transition-colors"
+              >
+                <Building2 className="w-4 h-4 text-slate-500" />
+                <span>사무실 유선 전화 (02-6082-0092)</span>
+              </a>
               <button
                 type="button"
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-700 font-semibold text-xs hover:bg-slate-200 transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl text-slate-500 font-semibold text-xs hover:bg-slate-50 transition-colors mt-1"
               >
-                확인
+                닫기
               </button>
             </div>
           </div>
