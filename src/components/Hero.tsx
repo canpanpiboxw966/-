@@ -65,3 +65,58 @@ export const Hero: React.FC = () => {
 
               {/* 실적 보기 */}
               <a
+                id="hero-portfolio-cta"
+                href="#portfolio"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1 px-3 py-3.5 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors min-h-[48px]"
+              >
+                <span>실적 보기</span>
+                <ChevronDown className="w-4 h-4 text-slate-400" />
+              </a>
+            </div>
+
+            {/* Service Keywords Bar */}
+            <div className="pt-5 border-t border-stone-200/80">
+              <div className="text-xs font-semibold text-slate-400 mb-2">주요 일반측량 업무</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
+                설계측량 <span className="text-slate-300 mx-1.5">·</span> 
+                공사측량 <span className="text-slate-300 mx-1.5">·</span> 
+                현황측량 <span className="text-slate-300 mx-1.5">·</span> 
+                하천측량 <span className="text-slate-300 mx-1.5">·</span> 
+                시설물 유지관리측량
+              </div>
+            </div>
+
+            {/* Consolidated Experience Statement */}
+            <div className="mt-5 p-4 rounded-xl bg-white border border-stone-200/80 shadow-2xs flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+              <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <span className="font-bold text-slate-900">2004년부터 현장에서 측량해왔습니다.</span> <br />
+                20년 이상의 현장 경험을 바탕으로 대표자가 직접 현장을 확인합니다.
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Clean, Tasteful Visual */}
+          <div className="lg:col-span-5">
+            <div className="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-2xs relative overflow-hidden group">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xs border border-stone-200 bg-stone-100">
+                <img 
+                  src={heroMiniatureImg} 
+                  alt="소울측량 현장 디오라마" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+
+              {/* Gentle, minimal caption */}
+              <div className="mt-3.5 px-1.5 flex items-center justify-between text-xs text-slate-500">
+                <span className="font-medium text-slate-700">현장 조건에 맞는 최적의 측량방법 검토</span>
+                <span className="font-mono text-slate-400 text-[11px]">SOUL SURVEY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
