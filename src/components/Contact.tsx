@@ -119,7 +119,7 @@ export const Contact: React.FC<ContactProps> = ({ onInquirySubmitted }) => {
     } catch (err) {
       console.error('Netlify Forms submission error:', err);
       setErrorMessage('문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-    } fontally {
+    } finally {
       setIsSubmitting(false);
     }
   };
