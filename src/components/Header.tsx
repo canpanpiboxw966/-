@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SoulSurveyLogo } from './SoulSurveyLogo';
-import { Phone, Lock, Menu, X, ArrowRight, ChevronRight, MessageSquare, Building2 } from 'lucide-react';
+import { Phone, Lock, Menu, X, ArrowRight, ChevronRight, MessageSquare, Building } from 'lucide-react';
 
 interface HeaderProps {
   onOpenAdmin: () => void;
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
             className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl transition-colors"
             title="사무실 대표전화 통화"
           >
-            <Building2 className="w-3.5 h-3.5 text-slate-600" />
+            <Building className="w-3.5 h-3.5 text-slate-600" />
             <span>02-6082-0092</span>
           </a>
 
@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
             aria-label="사무실 전화 연결"
             title="사무실 02-6082-0092"
           >
-            <Building2 className="w-4 h-4" />
+            <Building className="w-4 h-4" />
           </a>
 
           <a
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAdmin, onOpenContact }) =>
               href="tel:02-6082-0092"
               className="flex items-center justify-center gap-2 py-3 px-4 text-sm font-bold text-slate-800 bg-slate-100 active:bg-slate-200 rounded-xl border border-slate-200/80 w-full min-h-[44px]"
             >
-              <Building2 className="w-4 h-4 text-slate-600" />
+              <Building className="w-4 h-4 text-slate-600" />
               <span>사무실: 02-6082-0092</span>
             </a>
 
