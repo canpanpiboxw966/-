@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, PhoneCall, ChevronDown, CheckCircle2, Building2 } from 'lucide-react';
 import heroMiniatureImg from '../assets/images/survey_miniature_hero_cube_1789151725760.jpg';
 
 export const Hero: React.FC = () => {
@@ -29,79 +29,39 @@ export const Hero: React.FC = () => {
               적합한 측량방법을 함께 검토합니다.
             </p>
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 mb-8">
+            {/* Primary Action Buttons (사무실/직통 병행 표기 적용) */}
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-3.5 mb-8">
+              {/* 견적 문의하기 */}
               <a
                 id="hero-inquiry-cta"
                 href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-emerald-800 active:scale-98 rounded-xl shadow-xs transition-all group min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-emerald-800 active:scale-98 rounded-xl shadow-xs transition-all group min-h-[48px]"
               >
                 <span>측량 문의하기</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
+              {/* 사무실 전화 */}
               <a
-                id="hero-phone-cta"
+                id="hero-office-phone-cta"
+                href="tel:02-6082-0092"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 text-sm sm:text-base font-bold text-slate-800 bg-stone-100 hover:bg-stone-200 border border-stone-300/80 active:bg-stone-300 rounded-xl transition-colors min-h-[48px]"
+                title="사무실 전화 연결"
+              >
+                <Building2 className="w-4 h-4 text-slate-600" />
+                <span>사무실 (02-6082-0092)</span>
+              </a>
+
+              {/* 대표 직통 전화 */}
+              <a
+                id="hero-mobile-phone-cta"
                 href="tel:010-2322-0092"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-base font-bold text-slate-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:bg-emerald-200 rounded-xl transition-colors min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 text-sm sm:text-base font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:bg-emerald-200 rounded-xl transition-colors min-h-[48px]"
+                title="대표 직통 전화 연결"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-700" />
-                <span>전화하기 (010-2322-0092)</span>
+                <span>직통 (010-2322-0092)</span>
               </a>
 
+              {/* 실적 보기 */}
               <a
-                id="hero-portfolio-cta"
-                href="#portfolio"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3.5 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors min-h-[48px]"
-              >
-                <span>실적 보기</span>
-                <ChevronDown className="w-4 h-4 text-slate-400" />
-              </a>
-            </div>
-
-            {/* Service Keywords Bar */}
-            <div className="pt-5 border-t border-stone-200/80">
-              <div className="text-xs font-semibold text-slate-400 mb-2">주요 일반측량 업무</div>
-              <div className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
-                설계측량 <span className="text-slate-300 mx-1.5">·</span> 
-                공사측량 <span className="text-slate-300 mx-1.5">·</span> 
-                현황측량 <span className="text-slate-300 mx-1.5">·</span> 
-                하천측량 <span className="text-slate-300 mx-1.5">·</span> 
-                시설물 유지관리측량
-              </div>
-            </div>
-
-            {/* Consolidated Experience Statement */}
-            <div className="mt-5 p-4 rounded-xl bg-white border border-stone-200/80 shadow-2xs flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-              <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                <span className="font-bold text-slate-900">2004년부터 현장에서 측량해왔습니다.</span> <br />
-                20년 이상의 현장 경험을 바탕으로 대표자가 직접 현장을 확인합니다.
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Clean, Tasteful Visual (No Tech Clutter) */}
-          <div className="lg:col-span-5">
-            <div className="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-2xs relative overflow-hidden group">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xs border border-stone-200 bg-stone-100">
-                <img 
-                  src={heroMiniatureImg} 
-                  alt="소울측량 현장 디오라마" 
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              {/* Gentle, minimal caption */}
-              <div className="mt-3.5 px-1.5 flex items-center justify-between text-xs text-slate-500">
-                <span className="font-medium text-slate-700">현장 조건에 맞는 최적의 측량방법 검토</span>
-                <span className="font-mono text-slate-400 text-[11px]">SOUL SURVEY</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
